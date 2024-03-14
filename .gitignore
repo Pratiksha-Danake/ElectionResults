@@ -11,6 +11,8 @@
 README.md
 /.idea
 /build
+gradlew
+gradlew.bat
 
 # BlueJ files
 *.ctxt
