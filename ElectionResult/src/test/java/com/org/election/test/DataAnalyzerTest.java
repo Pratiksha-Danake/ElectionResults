@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DataAnalyzerTest {
@@ -14,5 +15,12 @@ public class DataAnalyzerTest {
     void shouldAbleToReadFileContainsElectionsData() throws FileNotFoundException {
         dataAnalyzer.readData();
         assertTrue(true);
+    }
+
+    @Test
+    void shouldAbleToGetTheFinalWinnerByAnalyzingData(){
+        String expectedWinner = "Indian National Congress";
+        String[] parts = dataAnalyzer.readData();
+        assertEquals(expectedWinner,dataAnalyzer.showFinalWinner(parts));
     }
 }
