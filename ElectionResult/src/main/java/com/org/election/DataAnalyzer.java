@@ -5,8 +5,11 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class DataAnalyzer {
-    DataSupplier dataSupplier = new DataSupplier();
-    StringBuilder fileContent = new StringBuilder();
+    DataSupplier dataSupplier;
+
+    public DataAnalyzer(DataSupplier dataSupplier) {
+        this.dataSupplier = dataSupplier;
+    }
 
     public String[] readData() {
         String[] parts = new String[0];
