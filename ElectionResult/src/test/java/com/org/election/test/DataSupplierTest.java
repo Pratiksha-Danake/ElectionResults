@@ -1,6 +1,6 @@
 package com.org.election.test;
 
-import com.org.election.DataSupplier;
+import com.org.election.io.file.DataSupplier;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +14,7 @@ public class DataSupplierTest {
         DataSupplier dataSupplier = new DataSupplier();
         File resultFile = new File(pathToFile);
         //Act
-        dataSupplier.createFile(pathToFile);
+        dataSupplier.getFile(pathToFile);
         //Assert
         Assertions.assertTrue(resultFile.exists());
     }

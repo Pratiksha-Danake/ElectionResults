@@ -1,4 +1,4 @@
-package com.org.election;
+package com.org.election.io.file;
 
 import java.io.File;
 
@@ -9,7 +9,7 @@ public class DataSupplier {
         return resultFile;
     }
 
-    public void createFile(String pathToFileContainsElectionData) {
+    public void getFile(String pathToFileContainsElectionData) {
         resultFile  = new File(pathToFileContainsElectionData);
     }
 }

@@ -1,4 +1,7 @@
-package com.org.election;
+package com.org.election.domain;
+
+import com.org.election.PartyCodeConverter;
+import com.org.election.io.file.DataSupplier;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -6,7 +9,7 @@ import java.io.IOException;
 
 public class DataAnalyzer {
     DataSupplier dataSupplier;
-
+    static final int totalVotes = 2100;
     public DataAnalyzer(DataSupplier dataSupplier) {
         this.dataSupplier = dataSupplier;
     }
@@ -38,34 +41,13 @@ public class DataAnalyzer {
             int votes = Integer.parseInt(parts[i]);
             if (votes > maxVotes) {
                 maxVotes = votes;
-                winner = getPartyFullName(parts[i+1]);
+                winner = PartyCodeConverter.getPartyFullName(parts[i+1]);
             }
         }
         return winner;
     }
 
-    private static String getPartyFullName(String partyCode) {
-        String fullName = "";
-        switch (partyCode) {
-            case "BJP":
-                fullName = "Bhartiya Janta Party";
-                break;
-            case "INC":
-                fullName = "Indian National Congress";
-                break;
-            case "BSP":
-                fullName = "Bahujan Samaj Party";
-                break;
-            case "CPI":
-                fullName = "Communist Party of India";
-                break;
-            case "NCP":
-                fullName = "Nationalist Congress Party";
-                break;
-            case "IND":
-                fullName = "Independent";
-                break;
-        }
-        return fullName;
+    public double getPercantageOfVotesCast() {
+        return 0;
     }
 }
