@@ -14,19 +14,6 @@ public class DataAnalyzer {
         this.dataSupplier = dataSupplier;
     }
 
-    public String[] readData() {
-        String[] parts = new String[0];
-        try (BufferedReader br = new BufferedReader(new FileReader(dataSupplier.getResultFile()))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                parts = line.split(", ");
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return parts;
-    }
-
     public String showFinalWinner(String[] constituencyData) {
         String constituency = constituencyData[0];
         String winner = getWinner(constituencyData);

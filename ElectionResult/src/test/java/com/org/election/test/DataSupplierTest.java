@@ -7,11 +7,11 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 
 public class DataSupplierTest {
+    DataSupplier dataSupplier = new DataSupplier();
     @Test
     void shouldAbleToCreateFileObjectForTheFileLocatedAtGivenPath(){
         //Arrange
         String pathToFile = "E:\\ElectionResults\\ElectionResult\\ElectionResult.txt";
-        DataSupplier dataSupplier = new DataSupplier();
         File resultFile = new File(pathToFile);
         //Act
         dataSupplier.getFile(pathToFile);
