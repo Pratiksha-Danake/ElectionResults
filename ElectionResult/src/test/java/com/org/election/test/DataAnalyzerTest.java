@@ -1,45 +1,36 @@
 package com.org.election.test;
 
 import com.org.election.domain.DataAnalyzer;
-import com.org.election.domain.DataReader;
 import com.org.election.io.file.DataSupplier;
-import org.junit.jupiter.api.BeforeEach;
+import com.org.election.model.ConstituencyResult;
+import com.org.election.model.DataReader;
+import com.org.election.model.WinnerDisplay;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DataAnalyzerTest {
     DataSupplier dataSupplier = new DataSupplier();
-    DataAnalyzer dataAnalyzer = new DataAnalyzer(dataSupplier);
+    DataAnalyzer dataAnalyzer = new DataAnalyzer();
+    DataReader dataReader = new DataReader();
 
     @Test
-    @BeforeEach
-    void setUp(){
+    void shouldAbleToAnalyzeDataAndFindWinnerFromAConstituency(){
+        //Arrange
         String pathToFile = "E:\\ElectionResults\\ElectionResult\\ElectionResult.txt";
-        dataSupplier.getFile(pathToFile);
+        List<String> expectedWinners = List.of("IND","BSP");
+        File fileCreated = dataSupplier.getFile(pathToFile);
+        List<ConstituencyResult> constituencyResult = dataReader.readData(fileCreated);
+        //Act
+        List<WinnerDisplay> winners = dataAnalyzer.findWinner(constituencyResult);
+        //Assert
+        int index = 0;
+        for (WinnerDisplay winner : winners){
+            Assertions.assertEquals(expectedWinners.get(index),winner.getWinnerPartyCode());
+            index++;
+        }
     }
-
-//    @Test
-//    void shouldAbleToGetTheFinalWinnerByAnalyzingData() {
-//        //Arrange
-//        String expectedWinner = "Independent";
-//        //Act
-//        String[] elctionData = DataReader.readData();
-//        for (int i = 0; i < elctionData.length; i++) {
-//            //Assert
-//            assertEquals("Independent", dataAnalyzer.showFinalWinner(elctionData));
-//        }
-//    }
-
-//    @Test
-//    void shouldAbleToCalculateShareOfTheVotesAsAPercentageOfAllTheVotes(){
-//        //Arrange
-//        double expectedPercentageOfVotesCast = 28.57;
-//        //Act
-//        double actualPercentageOfVotesCast = dataAnalyzer.getPercantageOfVotesCast();
-//        assertEquals(expectedPercentageOfVotesCast,actualPercentageOfVotesCast);
-//    }
 }

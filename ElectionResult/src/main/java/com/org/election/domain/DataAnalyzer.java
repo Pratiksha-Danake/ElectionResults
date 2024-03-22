@@ -1,40 +1,39 @@
 package com.org.election.domain;
 
-import com.org.election.PartyCodeConverter;
 import com.org.election.io.file.DataSupplier;
+import com.org.election.model.ConstituencyResult;
+import com.org.election.model.WinnerDisplay;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class DataAnalyzer {
-    DataSupplier dataSupplier;
     static final int totalVotes = 2100;
-    public DataAnalyzer(DataSupplier dataSupplier) {
-        this.dataSupplier = dataSupplier;
+
+    public List<WinnerDisplay> findWinner(List<ConstituencyResult> constituencyResult) {
+        List<WinnerDisplay> winnersList = new ArrayList<>();
+        for (ConstituencyResult result : constituencyResult) {
+            String constituency = result.getConstituency();
+            Map<String, Integer> partyVotes = result.getPartyVotes();
+            winnersList.add(findWinnerParty(constituency,partyVotes));
+        }
+        return winnersList;
     }
 
-    public String showFinalWinner(String[] constituencyData) {
-        String constituency = constituencyData[0];
-        String winner = getWinner(constituencyData);
-        System.out.println( constituency + " Constituency "+": "+ winner);
-        return winner;
-    }
-
-    private static String getWinner(String[] parts) {
-        int maxVotes = 0;
-        String winner = "";
-        for (int i = 1; i < parts.length; i += 2) {
-            int votes = Integer.parseInt(parts[i]);
+    private static WinnerDisplay findWinnerParty(String constituency, Map<String, Integer> partyVotes) {
+        String winnerParty = null;
+        double percentageOfVotes;
+        int maxVotes = Integer.MIN_VALUE;
+        for (Map.Entry<String, Integer> entry : partyVotes.entrySet()) {
+            String partyCode = entry.getKey();
+            int votes = entry.getValue();
             if (votes > maxVotes) {
                 maxVotes = votes;
-                winner = PartyCodeConverter.getPartyFullName(parts[i+1]);
+                winnerParty = partyCode;
             }
         }
-        return winner;
-    }
-
-    public double getPercantageOfVotesCast() {
-        return 0;
+        percentageOfVotes = (double) maxVotes / totalVotes * 100;
+        return new WinnerDisplay(constituency,winnerParty,maxVotes,percentageOfVotes);
     }
 }

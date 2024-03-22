@@ -1,4 +1,4 @@
-package com.org.election;
+package com.org.election.model;
 public class PartyCodeConverter {
      public static final String getPartyFullName(String partyCode) {
         String fullName = "";

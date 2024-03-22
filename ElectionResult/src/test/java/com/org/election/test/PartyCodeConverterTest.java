@@ -1,6 +1,6 @@
 package com.org.election.test;
 
-import com.org.election.PartyCodeConverter;
+import com.org.election.model.PartyCodeConverter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

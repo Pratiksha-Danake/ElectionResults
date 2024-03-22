@@ -1,11 +1,17 @@
-package com.org.election;
+package com.org.election.model;
 
+import java.util.List;
 import java.util.Objects;
 
 public class WinnerDisplay {
     private String winnerConstituency;
     private String winnerPartyCode;
     private int winnerPartyVotes;
+    private double votesPercentage;
+
+    public double getVotesPercentage() {
+        return votesPercentage;
+    }
 
     public String getWinnerConstituency() {
         return winnerConstituency;
@@ -19,17 +25,19 @@ public class WinnerDisplay {
         return winnerPartyVotes;
     }
 
-    public WinnerDisplay(String winnerConstituency, String winnerPartyCode, int winnerPartyVotes) {
+    public WinnerDisplay(String winnerConstituency, String winnerPartyCode, int winnerPartyVotes, double percentageOfVotes) {
         this.winnerConstituency = winnerConstituency;
         this.winnerPartyCode = winnerPartyCode;
         this.winnerPartyVotes = winnerPartyVotes;
+        this.votesPercentage = percentageOfVotes;
     }
 
-    public void showWinnerDetails() {
+    public void showWinnerDetails(List<WinnerDisplay> winners) {
         System.out.println("Winner Constituency : " + winnerConstituency
                 +"\n"+
                 "Winner Party Full Name : " + PartyCodeConverter.getPartyFullName(winnerPartyCode)
-                +"\n"+"Winner Party Votes : "+winnerPartyVotes);
+                +"\n"+"Winner Party Votes : "+getWinnerPartyVotes()
+                +"\n"+"Percentage Of Votes casted to winner party : "+getVotesPercentage());
     }
 
     @Override
