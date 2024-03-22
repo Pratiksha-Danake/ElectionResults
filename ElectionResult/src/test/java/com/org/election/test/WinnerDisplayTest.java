@@ -1,6 +1,7 @@
 package com.org.election.test;
 
 import com.org.election.domain.DataAnalyzer;
+import com.org.election.exceptions.InvalidPartyException;
 import com.org.election.io.file.DataSupplier;
 import com.org.election.model.ConstituencyResult;
 import com.org.election.model.DataReader;
@@ -17,7 +18,7 @@ public class WinnerDisplayTest {
     DataReader dataReader = new DataReader();
 
     @Test
-    void shouldAbleToDisplayDataOfWinnerPartyFromConstituency(){
+    void shouldAbleToDisplayDataOfWinnerPartyFromConstituency() throws InvalidPartyException {
         //Arrange
         String pathToFile = "E:\\ElectionResults\\ElectionResult\\ElectionResult.txt";
         File fileCreated = dataSupplier.getFile(pathToFile);
