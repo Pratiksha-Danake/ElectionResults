@@ -1,5 +1,7 @@
 package com.org.election;
 
+import java.util.Objects;
+
 public class WinnerDisplay {
     private String winnerConstituency;
     private String winnerPartyCode;
@@ -28,5 +30,18 @@ public class WinnerDisplay {
                 +"\n"+
                 "Winner Party Full Name : " + PartyCodeConverter.getPartyFullName(winnerPartyCode)
                 +"\n"+"Winner Party Votes : "+winnerPartyVotes);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        WinnerDisplay that = (WinnerDisplay) o;
+        return winnerPartyVotes == that.winnerPartyVotes && Objects.equals(winnerConstituency, that.winnerConstituency) && Objects.equals(winnerPartyCode, that.winnerPartyCode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(winnerConstituency, winnerPartyCode, winnerPartyVotes);
     }
 }
