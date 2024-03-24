@@ -7,16 +7,15 @@
     <list default="true" id="03ce14c5-9b14-444b-b9ef-c141376b79ee" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/jacoco/test.exec" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacoco/test.exec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/com.amaap.electionresult.domain.model.test.ElectionManagerTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/com.amaap.electionresult.domain.model.test.ElectionManagerTest.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/com.amaap.electionresult.domain.model.test.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/com.amaap.electionresult.domain.model.test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-com.amaap.electionresult.domain.model.test.ElectionManagerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-com.amaap.electionresult.domain.model.test.ElectionManagerTest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amaap/electionresult/domain/exceptions/InvalidPartyException.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/amaap/electionresult/domain/model/ElectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amaap/electionresult/domain/model/ElectionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amaap/electionresult/domain/model/Party.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amaap/electionresult/domain/model/Party.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amaap/electionresult/domain/model/validators/PartyValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amaap/electionresult/domain/model/validators/PartyValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/amaap/electionresult/domain/model/test/ElectionManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/amaap/electionresult/domain/model/test/ElectionManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/amaap/electionresult/domain/model/validators/test/PartyValidatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/amaap/electionresult/domain/model/validators/test/PartyValidatorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,21 +71,21 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_directory_selection": "E:/ElectionResults/ElectionResult/src/main/java/com/amaap/electionresult/domain/model",
-    "last_opened_file_path": "E:/ElectionResults/ElectionResult"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;E:/ElectionResults/ElectionResult/src/main/java/com/amaap/electionresult/domain/model&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/ElectionResults/ElectionResult&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.amaap.electionresult.domain.model" />
       <recent name="com.amaap.electionresult.domain.model.test" />
       <recent name="com.amaap.electionresult.domain.exceptions" />
       <recent name="com.amaap.electionresult.domain.model.exceptions" />
       <recent name="com.amaap.electionresult.domain.model.validators" />
-      <recent name="com.amaap.electionresult.domain.model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\ElectionResults\ElectionResult\src" />

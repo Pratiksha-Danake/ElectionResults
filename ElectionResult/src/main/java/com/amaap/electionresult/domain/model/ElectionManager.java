@@ -8,9 +8,14 @@ import java.util.List;
 
 public class ElectionManager {
     private List<Party> electionParties = new ArrayList<>();
+    private List<Constituency> constiuencies = new ArrayList<>();
 
     public List<Party> getElectionParties() {
         return electionParties;
+    }
+
+    public List<Constituency> getConstiuencies() {
+        return constiuencies;
     }
 
     public Party createParty(String partyCode, String partyName) throws InvalidPartyNameException, InvalidPartyCodeException {
@@ -19,5 +24,13 @@ public class ElectionManager {
 
     public void addParty(Party partyToAdd) {
         electionParties.add(partyToAdd);
+    }
+
+    public Constituency createConstituency(String constituencyToCreate) {
+        return Constituency.create(constituencyToCreate);
+    }
+
+    public void addConstituency(Constituency constituencyToAdd) {
+        constiuencies.add(constituencyToAdd);
     }
 }

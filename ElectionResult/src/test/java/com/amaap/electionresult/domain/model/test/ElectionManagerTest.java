@@ -1,5 +1,6 @@
 package com.amaap.electionresult.domain.model.test;
 
+import com.amaap.electionresult.domain.model.Constituency;
 import com.amaap.electionresult.domain.model.ElectionManager;
 import com.amaap.electionresult.domain.model.Party;
 import com.amaap.electionresult.domain.model.exceptions.InvalidPartyCodeException;
@@ -31,6 +32,27 @@ public class ElectionManagerTest {
         //Act
         electionManager.addParty(partyToAdd);
         //Assert
-        Assertions.assertNotEquals(0,electionManager.getElectionParties().size());
+        Assertions.assertNotEquals(0, electionManager.getElectionParties().size());
+    }
+
+    @Test
+    void shouldAbleToCreateConstituencyWithGivenName() {
+        //Arrange
+        String constituencyToCreate = "Pune";
+        Constituency expectedConstituency = Constituency.create(constituencyToCreate);
+        //Act
+        Constituency actualConstituency = electionManager.createConstituency(constituencyToCreate);
+        //Assert
+        Assertions.assertEquals(expectedConstituency, actualConstituency);
+    }
+
+    @Test
+    void shouldAbleToAddConstituencytoTheList() {
+        //Arrange
+        Constituency constituencyToAdd = Constituency.create("Pune");
+        //Act
+        electionManager.addConstituency(constituencyToAdd);
+        //Assert
+        Assertions.assertNotEquals(0, electionManager.getConstiuencies().size());
     }
 }
