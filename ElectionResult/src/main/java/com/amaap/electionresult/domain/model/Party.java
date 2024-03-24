@@ -6,9 +6,13 @@ public class Party {
     private String code;
     private String name;
 
-    public Party(String partyCode, String partyName) {
+    private Party(String partyCode, String partyName) {
         this.code = code;
         this.name = name;
+    }
+
+    public static Party create(String partyCode, String partyName) {
+        return new Party(partyCode, partyName);
     }
 
     @Override
