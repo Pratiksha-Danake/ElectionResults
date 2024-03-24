@@ -1,5 +1,6 @@
 package com.amaap.electionresult.domain.model;
 
+import com.amaap.electionresult.domain.model.exceptions.InvalidConstituencyNameException;
 import com.amaap.electionresult.domain.model.exceptions.InvalidPartyCodeException;
 import com.amaap.electionresult.domain.model.exceptions.InvalidPartyNameException;
 
@@ -26,7 +27,7 @@ public class ElectionManager {
         electionParties.add(partyToAdd);
     }
 
-    public Constituency createConstituency(String constituencyToCreate) {
+    public Constituency createConstituency(String constituencyToCreate) throws InvalidConstituencyNameException {
         return Constituency.create(constituencyToCreate);
     }
 

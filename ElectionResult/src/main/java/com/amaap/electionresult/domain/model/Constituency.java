@@ -1,5 +1,8 @@
 package com.amaap.electionresult.domain.model;
 
+import com.amaap.electionresult.domain.model.exceptions.InvalidConstituencyNameException;
+import com.amaap.electionresult.domain.model.validators.ConstituencyValidator;
+
 import java.util.Objects;
 
 public class Constituency {
@@ -9,7 +12,9 @@ public class Constituency {
         this.constituency = constituencyName;
     }
 
-    public static Constituency create(String constituencyName) {
+    public static Constituency create(String constituencyName) throws InvalidConstituencyNameException {
+        if (!ConstituencyValidator.isValidConstituency(constituencyName))
+            throw new InvalidConstituencyNameException("constituency name cannot be null or empty");
         return new Constituency(constituencyName);
     }
 

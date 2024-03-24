@@ -3,6 +3,7 @@ package com.amaap.electionresult.domain.model.test;
 import com.amaap.electionresult.domain.model.Constituency;
 import com.amaap.electionresult.domain.model.ElectionManager;
 import com.amaap.electionresult.domain.model.Party;
+import com.amaap.electionresult.domain.model.exceptions.InvalidConstituencyNameException;
 import com.amaap.electionresult.domain.model.exceptions.InvalidPartyCodeException;
 import com.amaap.electionresult.domain.model.exceptions.InvalidPartyNameException;
 import org.junit.jupiter.api.Assertions;
@@ -36,7 +37,7 @@ public class ElectionManagerTest {
     }
 
     @Test
-    void shouldAbleToCreateConstituencyWithGivenName() {
+    void shouldAbleToCreateConstituencyWithGivenName() throws InvalidConstituencyNameException {
         //Arrange
         String constituencyToCreate = "Pune";
         Constituency expectedConstituency = Constituency.create(constituencyToCreate);
@@ -47,7 +48,7 @@ public class ElectionManagerTest {
     }
 
     @Test
-    void shouldAbleToAddConstituencytoTheList() {
+    void shouldAbleToAddConstituencytoTheList() throws InvalidConstituencyNameException {
         //Arrange
         Constituency constituencyToAdd = Constituency.create("Pune");
         //Act
