@@ -1,12 +1,16 @@
 package com.amaap.electionresult.domain.model.validators;
 
-import com.amaap.electionresult.domain.model.exceptions.InvalidPartyNameException;
-
 public class PartyValidator {
 
-    public boolean isValidPartyName(String partyName) throws InvalidPartyNameException {
+    public static boolean isValidPartyName(String partyName){
         if (partyName == null || partyName.isEmpty())
-            throw new InvalidPartyNameException("Part name cannot be null or empty");
+            return false;
+        return true;
+    }
+
+    public static boolean isValidPartyCode(String partyCode) {
+        if (partyCode == null || partyCode.isEmpty())
+            return false;
         return true;
     }
 }
