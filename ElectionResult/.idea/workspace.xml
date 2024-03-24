@@ -7,15 +7,14 @@
     <list default="true" id="03ce14c5-9b14-444b-b9ef-c141376b79ee" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/jacoco/test.exec" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacoco/test.exec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/com.amaap.electionresult.domain.model.test.ElectionManagerTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/com.amaap.electionresult.domain.model.test.ElectionManagerTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/com.amaap.electionresult.domain.model.test.ElectionManagerTest.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/com.amaap.electionresult.domain.model.test.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/com.amaap.electionresult.domain.model.test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-com.amaap.electionresult.domain.model.test.ElectionManagerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-com.amaap.electionresult.domain.model.test.ElectionManagerTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/com.amaap.electionresult.domain.model.test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-com.amaap.electionresult.domain.model.test.ElectionManagerTest.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/amaap/electionresult/domain/model/ElectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/amaap/electionresult/domain/model/ElectionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/amaap/electionresult/domain/model/test/ElectionManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/amaap/electionresult/domain/model/test/ElectionManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/amaap/electionresult/domain/model/validators/test/PartyValidatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/amaap/electionresult/domain/model/validators/test/PartyValidatorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,11 +80,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.amaap.electionresult.domain.model.validators" />
       <recent name="com.amaap.electionresult.domain.model" />
       <recent name="com.amaap.electionresult.domain.model.test" />
       <recent name="com.amaap.electionresult.domain.exceptions" />
       <recent name="com.amaap.electionresult.domain.model.exceptions" />
-      <recent name="com.amaap.electionresult.domain.model.validators" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\ElectionResults\ElectionResult\src" />
@@ -98,7 +97,30 @@
       <recent name="com.amaap.electionresult.domain.model.service" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ElectionManagerTest">
+  <component name="RunManager" selected="Gradle.PartyValidatorTest">
+    <configuration name="ConstituencyValidatorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.amaap.electionresult.domain.model.validators.test.ConstituencyValidatorTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="ElectionManagerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -168,29 +190,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="PartyValidatorTest.shouldAbleToThrowInvalidPartyNameExceptionWhenPartyNameIsEmpty" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.amaap.electionresult.domain.model.validators.test.PartyValidatorTest.shouldAbleToThrowInvalidPartyNameExceptionWhenPartyNameIsEmpty&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="PartyValidatorTest.shouldAbleToThrowInvalidPartyNameExceptionWhenPartyNameIsNull" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -216,11 +215,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.PartyValidatorTest" />
+        <item itemvalue="Gradle.ConstituencyValidatorTest" />
         <item itemvalue="Gradle.ElectionManagerTest" />
         <item itemvalue="Gradle.PartyTest" />
-        <item itemvalue="Gradle.PartyValidatorTest" />
         <item itemvalue="Gradle.PartyValidatorTest.shouldAbleToThrowInvalidPartyNameExceptionWhenPartyNameIsNull" />
-        <item itemvalue="Gradle.PartyValidatorTest.shouldAbleToThrowInvalidPartyNameExceptionWhenPartyNameIsEmpty" />
       </list>
     </recent_temporary>
   </component>

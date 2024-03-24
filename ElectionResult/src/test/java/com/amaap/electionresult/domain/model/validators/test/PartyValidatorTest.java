@@ -35,7 +35,7 @@ public class PartyValidatorTest {
         //Arrange
         String partyCode = "";
         //Act && Assert
-        Assertions.assertEquals(false, PartyValidator.isValidPartyCode(partyCode));
+        Assertions.assertFalse(PartyValidator.isValidPartyCode(partyCode));
     }
 
     @Test
@@ -43,7 +43,7 @@ public class PartyValidatorTest {
         //Arrange
         String partyCode = null;
         //Act && Assert
-        Assertions.assertEquals(false, PartyValidator.isValidPartyCode(partyCode));
+        Assertions.assertFalse(PartyValidator.isValidPartyCode(partyCode));
     }
 
     @Test
@@ -51,6 +51,6 @@ public class PartyValidatorTest {
         //Arrange
         String partyCode = "BJP";
         //Act && Assert
-        Assertions.assertEquals(true, PartyValidator.isValidPartyCode(partyCode));
+        Assertions.assertTrue(PartyValidator.isValidPartyCode(partyCode));
     }
 }

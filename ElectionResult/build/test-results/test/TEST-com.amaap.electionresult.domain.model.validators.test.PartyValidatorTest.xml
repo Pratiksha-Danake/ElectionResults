@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.amaap.electionresult.domain.model.validators.test.PartyValidatorTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-03-24T09:15:49" hostname="DESKTOP-GUO1275" time="0.087">
+  <properties/>
+  <testcase name="shouldAbleToReturnFalseWhenPartyNameIsEmpty()" classname="com.amaap.electionresult.domain.model.validators.test.PartyValidatorTest" time="0.052"/>
+  <testcase name="shouldAbleToReturnFalseWhenPartyCodeIsNull()" classname="com.amaap.electionresult.domain.model.validators.test.PartyValidatorTest" time="0.004"/>
+  <testcase name="shouldAbleToReturnFalseWhenPartyNameIsNull()" classname="com.amaap.electionresult.domain.model.validators.test.PartyValidatorTest" time="0.001"/>
+  <testcase name="shouldAbleToReturnTrueWhenPartyNameValid()" classname="com.amaap.electionresult.domain.model.validators.test.PartyValidatorTest" time="0.002"/>
+  <testcase name="shouldAbleToReturnTrueWhenPartyCodeValid()" classname="com.amaap.electionresult.domain.model.validators.test.PartyValidatorTest" time="0.009"/>
+  <testcase name="shouldAbleToReturnFalseWhenPartyCodeIsEmpty()" classname="com.amaap.electionresult.domain.model.validators.test.PartyValidatorTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
