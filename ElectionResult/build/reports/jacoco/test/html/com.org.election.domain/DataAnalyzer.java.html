@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DataAnalyzer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ElectionResult</a> &gt; <a href="index.source.html" class="el_package">com.org.election.domain</a> &gt; <span class="el_source">DataAnalyzer.java</span></div><h1>DataAnalyzer.java</h1><pre class="source lang-java linenums">package com.org.election.domain;
+
+import com.org.election.exceptions.InvalidPartyException;
+import com.org.election.io.file.DataSupplier;
+import com.org.election.model.ConstituencyResult;
+import com.org.election.model.PartyCodeConverter;
+import com.org.election.model.WinnerDisplay;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+<span class="fc" id="L13">public class DataAnalyzer {</span>
+    static final int totalVotes = 2100;
+
+    public List&lt;WinnerDisplay&gt; findWinner(List&lt;ConstituencyResult&gt; constituencyResult) throws InvalidPartyException {
+<span class="fc" id="L17">        List&lt;WinnerDisplay&gt; winnersList = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        for (ConstituencyResult result : constituencyResult) {</span>
+<span class="fc" id="L19">            String constituency = result.getConstituency();</span>
+<span class="fc" id="L20">            Map&lt;String, Integer&gt; partyVotes = result.getPartyVotes();</span>
+<span class="fc" id="L21">            winnersList.add(findWinnerParty(constituency,partyVotes));</span>
+<span class="fc" id="L22">        }</span>
+<span class="fc" id="L23">        return winnersList;</span>
+    }
+
+    private static WinnerDisplay findWinnerParty(String constituency, Map&lt;String, Integer&gt; partyVotes) throws InvalidPartyException {
+<span class="fc" id="L27">        String winnerParty = null;</span>
+        double percentageOfVotes;
+<span class="fc" id="L29">        int maxVotes = Integer.MIN_VALUE;</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        for (Map.Entry&lt;String, Integer&gt; entry : partyVotes.entrySet()) {</span>
+<span class="fc" id="L31">            String partyCode = entry.getKey();</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">            if(isValidParty(partyCode))</span>
+<span class="fc" id="L33">                throw new InvalidPartyException(&quot;Party does not exists..!&quot;);</span>
+<span class="fc" id="L34">            int votes = entry.getValue();</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">            if (votes &gt; maxVotes) {</span>
+<span class="fc" id="L36">                maxVotes = votes;</span>
+<span class="fc" id="L37">                winnerParty = partyCode;</span>
+            }
+<span class="fc" id="L39">        }</span>
+<span class="fc" id="L40">        percentageOfVotes = (double) maxVotes / totalVotes * 100;</span>
+<span class="fc" id="L41">        return new WinnerDisplay(constituency,winnerParty,maxVotes,percentageOfVotes);</span>
+    }
+
+    private static boolean isValidParty(String partyCode) {
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        if (PartyCodeConverter.getPartyFullName(partyCode).isEmpty())</span>
+<span class="fc" id="L46">            return true;</span>
+<span class="fc" id="L47">        return false;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
