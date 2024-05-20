@@ -1,23 +1,37 @@
 package com.amaap.electionresult.service.io;
 
 import com.amaap.electionresult.service.io.exception.InvalidFilePathException;
-import com.amaap.electionresult.service.io.validator.FilePathValidator;
+import com.amaap.electionresult.service.io.exception.UnformattedInputLineException;
+import com.google.inject.Inject;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 import static com.amaap.electionresult.service.io.validator.FilePathValidator.isInvalidPath;
 
 public class DataReader {
-    public boolean readFile(String filePath) throws InvalidFilePathException {
-        if (isInvalidPath(filePath))
-            throw new InvalidFilePathException("File Path Can't be.." + filePath);
-        else {
+    private DataParser dataParser;
+
+    @Inject
+    public DataReader(DataParser dataParser) {
+        this.dataParser = dataParser;
+    }
+
+    public boolean readFile(String filePath) throws InvalidFilePathException, UnformattedInputLineException {
+        if (isInvalidPath(filePath)) {
+            throw new InvalidFilePathException("File Path Can't be " + filePath);
+        } else {
             try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
                 String line;
                 while ((line = br.readLine()) != null) {
-                    System.out.println(line);
+                    if (line.trim().isEmpty())
+                        continue;
+                    if ((Pattern.matches("^([\\w\\s]+)(?:,\\s*(\\w+),\\s*(\\d+))+$", line.replaceAll("\\s*,\\s*", ","))))
+                        dataParser.parseInputLine(line);
+                    else
+                        throw new UnformattedInputLineException("Poorly Formatted Input Line " + line);
                 }
             } catch (IOException e) {
                 return false;
