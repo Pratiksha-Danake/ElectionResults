@@ -1,7 +1,7 @@
 package com.amaap.electionresult.util;
 
-import com.amaap.electionresult.domain.model.entity.Party;
 import com.amaap.electionresult.domain.model.entity.Constituency;
+import com.amaap.electionresult.domain.model.entity.Party;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
 
@@ -37,5 +37,19 @@ public class ConstituencyBuilder {
         constituencies.add(constituency2);
 
         return constituencies;
+    }
+
+    public static Constituency getConstituency() throws InvalidPartyNameException, InvalidVoteCountException {
+        List<Constituency> constituencies = new ArrayList<Constituency>();
+
+        List<Party> constituencyOneParties = new ArrayList<Party>();
+        constituencyOneParties.add(Party.create("INC", 100));
+        constituencyOneParties.add(Party.create("CPI", 200));
+        constituencyOneParties.add(Party.create("BJP", 300));
+        constituencyOneParties.add(Party.create("NCP", 400));
+        constituencyOneParties.add(Party.create("BSP", 500));
+        constituencyOneParties.add(Party.create("IND", 600));
+
+        return Constituency.create("Pune", constituencyOneParties);
     }
 }
