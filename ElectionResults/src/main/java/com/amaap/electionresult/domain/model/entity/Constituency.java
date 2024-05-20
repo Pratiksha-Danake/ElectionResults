@@ -1,7 +1,5 @@
 package com.amaap.electionresult.domain.model.entity;
 
-import com.amaap.electionresult.domain.model.Party;
-
 import java.util.List;
 import java.util.Objects;
 

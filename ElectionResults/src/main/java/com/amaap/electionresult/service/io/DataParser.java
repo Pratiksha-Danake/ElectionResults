@@ -1,6 +1,6 @@
 package com.amaap.electionresult.service.io;
 
-import com.amaap.electionresult.domain.model.Party;
+import com.amaap.electionresult.domain.model.entity.Party;
 import com.amaap.electionresult.service.ConstituencyService;
 import com.google.inject.Inject;
 

@@ -70,7 +70,7 @@ public class DataReadeTest {
         // act
         dataReader.readFile(pathToFile);
         List<Constituency> actual = constituencyService.getConstituenciesData();
-        
+
         // assert
         assertEquals(expected, actual);
     }

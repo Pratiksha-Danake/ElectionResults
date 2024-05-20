@@ -1,4 +1,4 @@
-package com.amaap.electionresult.domain.model;
+package com.amaap.electionresult.domain.model.entity;
 
 import java.util.Objects;
 

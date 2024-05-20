@@ -1,6 +1,6 @@
 package com.amaap.electionresult.util;
 
-import com.amaap.electionresult.domain.model.Party;
+import com.amaap.electionresult.domain.model.entity.Party;
 import com.amaap.electionresult.domain.model.entity.Constituency;
 
 import java.util.ArrayList;
