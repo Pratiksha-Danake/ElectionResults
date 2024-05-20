@@ -31,9 +31,20 @@ public class DataReadeTest {
     }
 
     @Test
-    void shouldThrowInvalidFilePathExceptionIfFilePathIsNotValid() throws IOException {
+    void shouldThrowInvalidFilePathExceptionIfFilePathIsNull() throws IOException {
         //arrange
         String pathToFile = null;
+
+        //act && assert
+        assertThrows(InvalidFilePathException.class, () -> {
+            dataReader.readFile(pathToFile);
+        });
+    }
+
+    @Test
+    void shouldThrowInvalidFilePathExceptionIfFilePathIsEmpty() throws IOException {
+        //arrange
+        String pathToFile = "";
 
         //act && assert
         assertThrows(InvalidFilePathException.class, () -> {
