@@ -1,5 +1,8 @@
 package com.amaap.electionresult.domain.model.entity;
 
+import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituencyNameException;
+import com.amaap.electionresult.domain.model.entity.validator.ConstituencyDataValidator;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -12,7 +15,9 @@ public class Constituency {
         this.parties = parties;
     }
 
-    public static Constituency create(String name, List<Party> parties) {
+    public static Constituency create(String name, List<Party> parties) throws InvalidConstituencyNameException {
+        if (ConstituencyDataValidator.isInvalidConstituencyName(name))
+            throw new InvalidConstituencyNameException("Constituency Name Can't Be:"+ name);
         return new Constituency(name, parties);
     }
 

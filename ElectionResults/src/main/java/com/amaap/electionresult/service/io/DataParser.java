@@ -1,6 +1,7 @@
 package com.amaap.electionresult.service.io;
 
 import com.amaap.electionresult.domain.model.entity.Party;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituencyNameException;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
 import com.amaap.electionresult.service.ConstituencyService;
@@ -17,7 +18,7 @@ public class DataParser {
         this.constituencyService = constituencyService;
     }
 
-    public boolean parseInputLine(String line) throws InvalidPartyNameException, InvalidVoteCountException {
+    public boolean parseInputLine(String line) throws InvalidPartyNameException, InvalidVoteCountException, InvalidConstituencyNameException {
         List<Party> parties = new ArrayList<Party>();
         String[] data = line.split(", ");
         String constituencyName = data[0];
