@@ -1,6 +1,7 @@
 package com.amaap.electionresult.domain.model.entity;
 
 import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
 import com.amaap.electionresult.domain.model.entity.validator.PartyDataValidator;
 
 import java.util.Objects;
@@ -16,9 +17,11 @@ public class Party {
         this.vote = vote;
     }
 
-    public static Party create(String name, int vote) throws InvalidPartyNameException {
+    public static Party create(String name, int vote) throws InvalidPartyNameException, InvalidVoteCountException {
         if (isInvalidPartyName(name))
-            throw new InvalidPartyNameException("Party name can't be: "+ name);
+            throw new InvalidPartyNameException("Party name can't be: " + name);
+        if (PartyDataValidator.isInvalidVoteCount(vote))
+            throw new InvalidVoteCountException("Vote Count Can't Be: " + vote);
         return new Party(name, vote);
     }
 

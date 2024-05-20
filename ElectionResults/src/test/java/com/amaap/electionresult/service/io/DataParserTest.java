@@ -2,6 +2,7 @@ package com.amaap.electionresult.service.io;
 
 import com.amaap.electionresult.AppModule;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,7 +20,7 @@ public class DataParserTest {
     }
 
     @Test
-    void shouldBeAbleToIgnoreNullInputLineTillTheEndOfTheFile() throws InvalidPartyNameException {
+    void shouldBeAbleToIgnoreNullInputLineTillTheEndOfTheFile() throws InvalidPartyNameException, InvalidVoteCountException {
         // arrange
         String line = null;
 

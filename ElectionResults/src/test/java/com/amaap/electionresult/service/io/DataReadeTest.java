@@ -3,6 +3,7 @@ package com.amaap.electionresult.service.io;
 import com.amaap.electionresult.AppModule;
 import com.amaap.electionresult.domain.model.entity.Constituency;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
 import com.amaap.electionresult.service.ConstituencyService;
 import com.amaap.electionresult.service.io.exception.InvalidFilePathException;
 import com.amaap.electionresult.service.io.exception.UnformattedInputLineException;
@@ -63,7 +64,7 @@ public class DataReadeTest {
     }
 
     @Test
-    void shouldBeAbleToSendDataToTheParserToFindMeaningFullInsights() throws InvalidFilePathException, UnformattedInputLineException, InvalidPartyNameException {
+    void shouldBeAbleToSendDataToTheParserToFindMeaningFullInsights() throws InvalidFilePathException, UnformattedInputLineException, InvalidPartyNameException, InvalidVoteCountException {
         //arrange
         String pathToFile = "E:\\ElectionResults\\ElectionResults\\src\\test\\java\\com\\amaap\\electionresult\\resource\\ResultData";
         List<Constituency> expected = ConstituencyBuilder.getConstituencies();

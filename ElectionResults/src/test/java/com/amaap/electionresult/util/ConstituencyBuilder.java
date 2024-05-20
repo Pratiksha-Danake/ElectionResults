@@ -3,13 +3,14 @@ package com.amaap.electionresult.util;
 import com.amaap.electionresult.domain.model.entity.Party;
 import com.amaap.electionresult.domain.model.entity.Constituency;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ConstituencyBuilder {
 
-    public static List<Constituency> getConstituencies() throws InvalidPartyNameException {
+    public static List<Constituency> getConstituencies() throws InvalidPartyNameException, InvalidVoteCountException {
         List<Constituency> constituencies = new ArrayList<Constituency>();
 
         List<Party> constituencyOneParties = new ArrayList<Party>();

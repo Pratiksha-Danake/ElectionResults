@@ -1,6 +1,7 @@
 package com.amaap.electionresult.service.io;
 
 import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
 import com.amaap.electionresult.service.io.exception.InvalidFilePathException;
 import com.amaap.electionresult.service.io.exception.UnformattedInputLineException;
 import com.google.inject.Inject;
@@ -34,7 +35,7 @@ public class DataReader {
                     else
                         throw new UnformattedInputLineException("Poorly Formatted Input Line " + line);
                 }
-            } catch (IOException e) {
+            } catch (IOException | InvalidVoteCountException e) {
                 return false;
             }
         }
