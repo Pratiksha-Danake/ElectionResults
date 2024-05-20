@@ -2,13 +2,14 @@ package com.amaap.electionresult.util;
 
 import com.amaap.electionresult.domain.model.entity.Party;
 import com.amaap.electionresult.domain.model.entity.Constituency;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ConstituencyBuilder {
 
-    public static List<Constituency> getConstituencies() {
+    public static List<Constituency> getConstituencies() throws InvalidPartyNameException {
         List<Constituency> constituencies = new ArrayList<Constituency>();
 
         List<Party> constituencyOneParties = new ArrayList<Party>();

@@ -1,6 +1,7 @@
 package com.amaap.electionresult.service.io;
 
 import com.amaap.electionresult.domain.model.entity.Party;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
 import com.amaap.electionresult.service.ConstituencyService;
 import com.google.inject.Inject;
 
@@ -15,7 +16,7 @@ public class DataParser {
         this.constituencyService = constituencyService;
     }
 
-    public boolean parseInputLine(String line) {
+    public boolean parseInputLine(String line) throws InvalidPartyNameException {
         List<Party> parties = new ArrayList<Party>();
         String[] data = line.split(", ");
         String constituencyName = data[0];

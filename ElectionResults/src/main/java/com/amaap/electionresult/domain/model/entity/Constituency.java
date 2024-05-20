@@ -7,7 +7,7 @@ public class Constituency {
     private String name;
     private List<Party> parties;
 
-    public Constituency(String name, List<Party> parties) {
+    private Constituency(String name, List<Party> parties) {
         this.name = name;
         this.parties = parties;
     }
