@@ -11,7 +11,10 @@ import com.google.inject.Injector;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class FakeInMemoryDatabaseTest {
     private FakeInMemoryDatabase fakeInMemoryDatabase;
@@ -32,5 +35,18 @@ class FakeInMemoryDatabaseTest {
 
         // assert
         assertEquals(constituency, actual);
+    }
+
+    @Test
+    void shouldBeAbleToGetConstituenciesFromTheDatabase() throws InvalidConstituencyNameException, InvalidPartyNameException, InvalidVoteCountException {
+        // arrange
+        Constituency expected = ConstituencyBuilder.getConstituency();
+
+        // act
+        List<Constituency> constituencies = fakeInMemoryDatabase.getConstituencies();
+
+        // assert
+        assertNotNull(constituencies);
+
     }
 }
