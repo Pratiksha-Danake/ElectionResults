@@ -4,8 +4,7 @@ import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameEx
 import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class PartyTest {
 
@@ -57,5 +56,35 @@ class PartyTest {
         assertThrows(InvalidVoteCountException.class, () -> {
             Party.create(partyName, -100);
         });
+    }
+
+    @Test
+    void shouldBeAbleToReturnTheHashCode() throws InvalidPartyNameException, InvalidVoteCountException {
+        // arrange && act
+        Party party1 = Party.create("BJP", 100);
+        Party party2 = Party.create("INC", 100);
+
+        // assert
+        assertNotEquals(party1.hashCode(), party2.hashCode());
+    }
+
+    @Test
+    void shouldBeAbleToTestTheEqualityOfTwoInstancesOfPartyClass() throws InvalidPartyNameException, InvalidVoteCountException {
+        // arrange
+        Party party1 = Party.create("BJP", 100);
+        Party party2 = Party.create("INC", 100);
+        Party party3 = Party.create("INC", 200);
+        Party party4 = Party.create("INC", 100);
+
+
+        // act && assert
+        assertFalse(party1.equals(null));
+        assertTrue(party1.equals(party1));
+        assertFalse(party1.equals(new Object()));
+
+        assertFalse(party2.equals(party3));
+        assertFalse(party1.equals(party3));
+        assertTrue(party2.equals(party4));
+        assertFalse(party1.equals(party2));
     }
 }

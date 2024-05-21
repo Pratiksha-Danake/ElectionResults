@@ -10,8 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ConstituencyTest {
     private List<Party> constituencyParties;
@@ -44,7 +43,6 @@ class ConstituencyTest {
     @Test
     void shouldThrowInvalidConstituencyNameExceptionIfConstituencyNameIsInvalid() {
 
-
         // act && assert
         assertThrows(InvalidConstituencyNameException.class, () -> {
             Constituency.create("", constituencyParties);
@@ -62,7 +60,6 @@ class ConstituencyTest {
     @Test
     void shouldThrowInvalidConstituencyPartiesExceptionIfConstituencyNameIsInvalid() {
 
-
         // act && assert
         assertThrows(InvalidConstituencyNameException.class, () -> {
             Constituency.create("", constituencyParties);
@@ -75,5 +72,33 @@ class ConstituencyTest {
         assertThrows(InvalidConstituencyNameException.class, () -> {
             Constituency actual = Constituency.create("ABC", constituencyParties);
         });
+    }
+
+    @Test
+    void shouldBeAbleReturnHashCode() throws InvalidConstituencyNameException, InvalidPartyNameException, InvalidVoteCountException {
+        // arrange
+        Constituency constituency1 = Constituency.create("Pune", constituencyParties);
+        List<Party> parties = new ArrayList<Party>();
+        constituencyParties.add(Party.create("INC", 100));
+        constituencyParties.add(Party.create("CPI", 200));
+        constituencyParties.add(Party.create("BJP", 300));
+        constituencyParties.add(Party.create("NCP", 400));
+        constituencyParties.add(Party.create("BSP", 500));
+        constituencyParties.add(Party.create("IND", 600));
+        Constituency constituency2 = Constituency.create("Cheannai", parties);
+
+        // act && assert
+        assertNotEquals(constituency1.hashCode(), constituency2.hashCode());
+    }
+
+    @Test
+    void shouldBeAbleToAssertTheEqualityOfTwoInstances() throws InvalidConstituencyNameException {
+        // arrange
+        Constituency constituency = Constituency.create("Pune", constituencyParties);
+
+        // act && assert
+        assertTrue(constituency.equals(constituency));
+        assertFalse(constituency.equals(null));
+        assertFalse(constituency.equals(new Object()));
     }
 }

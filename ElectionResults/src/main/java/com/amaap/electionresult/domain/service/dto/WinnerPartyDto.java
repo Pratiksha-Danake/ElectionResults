@@ -1,5 +1,7 @@
 package com.amaap.electionresult.domain.service.dto;
 
+import com.google.inject.Inject;
+
 import java.util.Objects;
 
 public class WinnerPartyDto {
@@ -7,6 +9,7 @@ public class WinnerPartyDto {
     private final String partyName;
     private final double percentageOfVotes;
 
+    @Inject
     public WinnerPartyDto(String party, double percentageOfVotes) {
         this.partyName = party;
         this.percentageOfVotes = percentageOfVotes;
