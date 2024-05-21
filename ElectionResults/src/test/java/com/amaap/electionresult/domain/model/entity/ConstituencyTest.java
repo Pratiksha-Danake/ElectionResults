@@ -4,6 +4,7 @@ import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituenc
 import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
 import com.amaap.electionresult.util.ConstituencyBuilder;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -13,17 +14,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ConstituencyTest {
-    @Test
-    void shouldBeAbleToCreateTheInstanceOfConstituency() throws InvalidPartyNameException, InvalidVoteCountException, InvalidConstituencyNameException {
+    private List<Party> constituencyParties;
+
+    @BeforeEach()
+    void arrangePartyData() throws InvalidPartyNameException, InvalidVoteCountException {
         // arrange
-        Constituency expected = ConstituencyBuilder.getConstituency();
-        List<Party> constituencyParties = new ArrayList<Party>();
+        constituencyParties = new ArrayList<Party>();
         constituencyParties.add(Party.create("INC", 100));
         constituencyParties.add(Party.create("CPI", 200));
         constituencyParties.add(Party.create("BJP", 300));
         constituencyParties.add(Party.create("NCP", 400));
         constituencyParties.add(Party.create("BSP", 500));
         constituencyParties.add(Party.create("IND", 600));
+    }
+
+    @Test
+    void shouldBeAbleToCreateTheInstanceOfConstituency() throws InvalidPartyNameException, InvalidVoteCountException, InvalidConstituencyNameException {
+        // arrange
+        Constituency expected = ConstituencyBuilder.getConstituency();
         String name = "Pune";
 
         // act
@@ -34,23 +42,38 @@ class ConstituencyTest {
     }
 
     @Test
-    void shouldThrowInvalidConstituencyNameExceptionIfConstituencyNameIsInvalid() throws
-            InvalidPartyNameException, InvalidVoteCountException, InvalidConstituencyNameException {
+    void shouldThrowInvalidConstituencyNameExceptionIfConstituencyNameIsInvalid() {
 
-        // arrange
-        Constituency expected = ConstituencyBuilder.getConstituency();
-        List<Party> constituencyParties = new ArrayList<Party>();
-        constituencyParties.add(Party.create("INC", 100));
-        constituencyParties.add(Party.create("CPI", 200));
-        constituencyParties.add(Party.create("BJP", 300));
-        constituencyParties.add(Party.create("NCP", 400));
-        constituencyParties.add(Party.create("BSP", 500));
-        constituencyParties.add(Party.create("IND", 600));
-        String name = "";
 
         // act && assert
         assertThrows(InvalidConstituencyNameException.class, () -> {
-            Constituency actual = Constituency.create(name, constituencyParties);
+            Constituency.create("", constituencyParties);
+        });
+
+        assertThrows(InvalidConstituencyNameException.class, () -> {
+            Constituency.create(null, constituencyParties);
+        });
+
+        assertThrows(InvalidConstituencyNameException.class, () -> {
+            Constituency.create("ABC", constituencyParties);
+        });
+    }
+
+    @Test
+    void shouldThrowInvalidConstituencyPartiesExceptionIfConstituencyNameIsInvalid() {
+
+
+        // act && assert
+        assertThrows(InvalidConstituencyNameException.class, () -> {
+            Constituency.create("", constituencyParties);
+        });
+
+        assertThrows(InvalidConstituencyNameException.class, () -> {
+            Constituency.create(null, constituencyParties);
+        });
+
+        assertThrows(InvalidConstituencyNameException.class, () -> {
+            Constituency actual = Constituency.create("ABC", constituencyParties);
         });
     }
 }
