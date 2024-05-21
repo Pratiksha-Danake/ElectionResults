@@ -9,8 +9,8 @@ import java.util.Objects;
 import static com.amaap.electionresult.domain.model.entity.validator.PartyDataValidator.isInvalidPartyName;
 
 public class Party {
-    private String name;
-    private int vote;
+    private final String name;
+    private final int vote;
 
     private Party(String name, int vote) {
         this.name = name;

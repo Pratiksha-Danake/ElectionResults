@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 import static com.amaap.electionresult.service.io.validator.FilePathValidator.isInvalidPath;
 
 public class DataReader {
-    private DataParser dataParser;
+    private final DataParser dataParser;
 
     @Inject
     public DataReader(DataParser dataParser) {

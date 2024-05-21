@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataParser {
-    private ConstituencyService constituencyService;
+    private final ConstituencyService constituencyService;
 
     @Inject
     public DataParser(ConstituencyService constituencyService) {

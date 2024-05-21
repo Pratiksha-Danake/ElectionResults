@@ -17,7 +17,7 @@ public class Constituency {
 
     public static Constituency create(String name, List<Party> parties) throws InvalidConstituencyNameException {
         if (ConstituencyDataValidator.isInvalidConstituencyName(name))
-            throw new InvalidConstituencyNameException("Constituency Name Can't Be:"+ name);
+            throw new InvalidConstituencyNameException("Constituency Name Can't Be:" + name);
         return new Constituency(name, parties);
     }
 

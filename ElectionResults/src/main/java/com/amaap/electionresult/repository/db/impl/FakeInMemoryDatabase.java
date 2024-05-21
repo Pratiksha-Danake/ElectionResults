@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FakeInMemoryDatabase implements InMemoryDatabase {
-    private List<Constituency> constituencies = new ArrayList<>();
+    private final List<Constituency> constituencies = new ArrayList<>();
 
     @Override
     public Constituency addConstituency(Constituency constituency) {

@@ -1,7 +1,7 @@
 package com.amaap.electionresult.service;
 
-import com.amaap.electionresult.domain.model.entity.Party;
 import com.amaap.electionresult.domain.model.entity.Constituency;
+import com.amaap.electionresult.domain.model.entity.Party;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituencyNameException;
 import com.amaap.electionresult.repository.ConstituencyRepository;
 import com.google.inject.Inject;
@@ -9,7 +9,7 @@ import com.google.inject.Inject;
 import java.util.List;
 
 public class ConstituencyService {
-    private ConstituencyRepository constituencyRepository;
+    private final ConstituencyRepository constituencyRepository;
 
     @Inject
     public ConstituencyService(ConstituencyRepository constituencyRepository) {

@@ -2,38 +2,43 @@ package com.amaap.electionresult.domain.service;
 
 import com.amaap.electionresult.domain.model.entity.Constituency;
 import com.amaap.electionresult.domain.model.entity.Party;
+import com.amaap.electionresult.domain.service.dto.WinnerPartyDto;
 
 import java.util.List;
 
 public class WinnerEvaluatorService {
+    private int totalVotes = 0;
 
-    public String findWinner(List<Constituency> constituenciesData) {
+    public WinnerPartyDto findWinner(List<Constituency> constituenciesData) {
         String constituencyName = null;
-        String winnerPartyOfTheConstituency = null;
+        WinnerPartyDto winnerParty = null;
         for (Constituency constituency : constituenciesData) {
             constituencyName = constituency.getName();
             List<Party> constituencyParties = constituency.getParties();
-            winnerPartyOfTheConstituency = getWinnerOfTheConstituency(constituencyParties);
+            winnerParty = getWinnerOfTheConstituency(constituencyParties);
         }
-
-        return winnerPartyOfTheConstituency;
-//        Constituency constituency = constituenciesData.get(0);
-//        constituency.getName();
-//        List<Party> parties = constituency.getParties();
-//        Party party = parties.get(0);
-//        party.getName();
-//        party.getVote();
+        winnerParty.setConstituencyName(constituencyName);
+        return winnerParty;
     }
 
-    private String getWinnerOfTheConstituency(List<Party> constituencyParties) {
+    private WinnerPartyDto getWinnerOfTheConstituency(List<Party> constituencyParties) {
         String winnerParty = null;
         int maxVotes = Integer.MIN_VALUE;
         for (Party party : constituencyParties) {
-            if (party.getVote() > maxVotes) {
-                maxVotes = party.getVote();
+            int votes = party.getVote();
+            if (votes > maxVotes) {
+                maxVotes = votes;
+                totalVotes += votes;
                 winnerParty = party.getName();
             }
         }
-        return winnerParty;
+        double percentageOfVotes = getPercentageOfVotes(totalVotes, maxVotes);
+        return new WinnerPartyDto(winnerParty, percentageOfVotes);
+    }
+
+    private double getPercentageOfVotes(int totalVotes, int maxVotes) {
+        double percentage = ((double) maxVotes / totalVotes) * 100;
+        double percentageOfVotes = Math.round(percentage * 100.0) / 100.0;
+        return percentageOfVotes;
     }
 }

@@ -4,6 +4,7 @@ import com.amaap.electionresult.AppModule;
 import com.amaap.electionresult.domain.model.entity.Constituency;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituencyNameException;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
+import com.amaap.electionresult.domain.service.dto.WinnerPartyDto;
 import com.amaap.electionresult.service.ConstituencyService;
 import com.amaap.electionresult.service.io.DataReader;
 import com.amaap.electionresult.service.io.exception.InvalidFilePathException;
@@ -38,11 +39,12 @@ class WinnerEvaluatorServiceTest {
         String filePath = "E:\\ElectionResults\\ElectionResults\\src\\test\\java\\com\\amaap\\electionresult\\resource\\ResultData";
         dataReader.readFile(filePath);
         List<Constituency> constituenciesData = constituencyService.getConstituenciesData();
-        String expectedWinner = "IND";
+        WinnerPartyDto expectedWinner = new WinnerPartyDto("IND", 28.57);
+        expectedWinner.setConstituencyName("Pune");
 
         // act
-        String actualWinner = winnerEvaluatorService.findWinner(constituenciesData);
-
+        WinnerPartyDto actualWinner = winnerEvaluatorService.findWinner(constituenciesData);
+        
         // assert
         assertEquals(expectedWinner, actualWinner);
     }

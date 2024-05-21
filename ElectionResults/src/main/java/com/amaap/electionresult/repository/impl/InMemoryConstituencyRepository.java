@@ -8,7 +8,7 @@ import com.google.inject.Inject;
 import java.util.List;
 
 public class InMemoryConstituencyRepository implements ConstituencyRepository {
-    private InMemoryDatabase inMemoryDatabase;
+    private final InMemoryDatabase inMemoryDatabase;
 
     @Inject
     public InMemoryConstituencyRepository(InMemoryDatabase inMemoryDatabase) {
