@@ -39,13 +39,20 @@ class WinnerEvaluatorServiceTest {
         String filePath = "E:\\ElectionResults\\ElectionResults\\src\\test\\java\\com\\amaap\\electionresult\\resource\\ResultData";
         dataReader.readFile(filePath);
         List<Constituency> constituenciesData = constituencyService.getConstituenciesData();
-        WinnerPartyDto expectedWinner = new WinnerPartyDto("IND", 28.57);
-        expectedWinner.setConstituencyName("Pune");
+
+        WinnerPartyDto expectedWinner1 = new WinnerPartyDto("IND", 28.57);
+        expectedWinner1.setConstituencyName("Pune");
+
+        WinnerPartyDto expectedWinner2 = new WinnerPartyDto("BSP", 25.81);
+        expectedWinner2.setConstituencyName("Chennai");
+
+        List<WinnerPartyDto> expectedWinnerParties = List.of(expectedWinner1, expectedWinner2);
+
 
         // act
-        WinnerPartyDto actualWinner = winnerEvaluatorService.findWinner(constituenciesData);
-        
+        List<WinnerPartyDto> actualWinnerParties = winnerEvaluatorService.findWinner(constituenciesData);
+
         // assert
-        assertEquals(expectedWinner, actualWinner);
+        assertEquals(expectedWinnerParties, actualWinnerParties);
     }
 }
