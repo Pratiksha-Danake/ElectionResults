@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class WinnerPartyDto {
     private String constituencyName;
-    private String partyName;
-    private double percentageOfVotes;
+    private final String partyName;
+    private final double percentageOfVotes;
 
     public WinnerPartyDto(String party, double percentageOfVotes) {
         this.partyName = party;

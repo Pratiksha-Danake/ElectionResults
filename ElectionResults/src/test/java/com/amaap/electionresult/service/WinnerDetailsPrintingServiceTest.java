@@ -38,8 +38,8 @@ class WinnerDetailsPrintingServiceTest {
         winnerDetailsPrintingService.print(expectedWinnerParties);
 
         // assert
-        String expectedOutput = "Constituency:\tPune\tWinning Party:\tIND\tPercentage of Votes Get:\t28.57\n" +
-                "Constituency:\tChennai\tWinning Party:\tBSP\tPercentage of Votes Get:\t25.81";
+        String expectedOutput = "Constituency:\tPune\tWinning Party:\tIndependent\tPercentage of Votes Get:\t28.57\n" +
+                "Constituency:\tChennai\tWinning Party:\tBahujan Samaj Party\tPercentage of Votes Get:\t25.81";
 
         System.setOut(originalOut);
     }
