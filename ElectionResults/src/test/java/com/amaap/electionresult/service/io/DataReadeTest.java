@@ -78,4 +78,30 @@ public class DataReadeTest {
         // assert
         assertEquals(expected, actual);
     }
+
+    @Test
+    void shouldBeAbleToIgnoreEmptyLinesInBetweenDataLinesAndContinuesReading() throws InvalidConstituencyNameException, InvalidFilePathException, InvalidPartyNameException, UnformattedInputLineException, FileNotFoundException, InvalidVoteCountException {
+        //arrange
+        String pathToFile = "E:\\ElectionResults\\ElectionResults\\src\\test\\java\\com\\amaap\\electionresult\\resource\\PoorlyFormattedResultData";
+        List<Constituency> expected = ConstituencyBuilder.getConstituencies();
+
+        // act
+        dataReader.readFile(pathToFile);
+        List<Constituency> actual = constituencyService.getConstituenciesData();
+
+        // assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldThrowUnformattedInputLineExceptionIfFileContainsElectionDataWhichIsNotINRequiredFormat() throws InvalidConstituencyNameException, InvalidPartyNameException, FileNotFoundException, InvalidVoteCountException, InvalidFilePathException, UnformattedInputLineException {
+        //arrange
+        String pathToFile = "E:\\ElectionResults\\ElectionResults\\src\\test\\java\\com\\amaap\\electionresult\\resource\\DataThrowException";
+        List<Constituency> expected = ConstituencyBuilder.getConstituencies();
+
+        // act && assert
+        assertThrows(UnformattedInputLineException.class, () -> {
+            dataReader.readFile(pathToFile);
+        });
+    }
 }

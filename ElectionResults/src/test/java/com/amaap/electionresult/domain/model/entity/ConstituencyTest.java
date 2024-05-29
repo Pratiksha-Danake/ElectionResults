@@ -81,8 +81,8 @@ class ConstituencyTest {
         Constituency constituency = Constituency.create("Pune", constituencyParties);
 
         // act && assert
-        assertEquals(constituency, constituency);
-        assertNotEquals(null, constituency);
-        assertNotEquals(constituency, new Object());
+        assertTrue(constituency.equals(constituency));
+        assertFalse(constituency.equals(null));
+        assertFalse(constituency.equals(new Object()));
     }
 }

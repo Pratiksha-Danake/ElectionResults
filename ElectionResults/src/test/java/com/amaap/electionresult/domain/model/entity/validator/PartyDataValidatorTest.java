@@ -24,6 +24,20 @@ class PartyDataValidatorTest {
         int vote = 100;
 
         // assert
-         assertFalse(isInvalidPartyName(name));
+        assertFalse(isInvalidPartyName(name));
+    }
+
+    @Test
+    void shouldBeAbleToValidatePartyName() throws FileNotFoundException {
+        // act
+        assertTrue(isInvalidPartyName(null));
+        assertTrue(isInvalidPartyName(""));
+        assertTrue(isInvalidPartyName("AB"));
+        assertTrue(isInvalidPartyName("PQ"));
+        assertTrue(isInvalidPartyName("XYZ"));
+        assertFalse(isInvalidPartyName("INC"));
+        assertFalse(isInvalidPartyName("BJP"));
+        assertFalse(isInvalidPartyName("AAP"));
+        assertTrue(isInvalidPartyName("XYZ"));
     }
 }

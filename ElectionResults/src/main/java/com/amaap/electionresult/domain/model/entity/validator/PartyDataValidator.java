@@ -16,7 +16,7 @@ public class PartyDataValidator {
         FileInputStream fileInputStream = new FileInputStream("E:\\ElectionResults\\ElectionResults\\src\\main\\java\\com\\amaap\\electionresult\\config\\ValidElectionData.yaml");
         Map<String, List<String>> validData = yaml.load(fileInputStream);
         parties = validData.get("PartyCodes");
-        if (name == null || name.equals("") || !(name.matches("^[a-zA-Z]{3,}$") || parties.contains(name)))
+        if (name == null || name.equals("") || !(name.matches("^[a-zA-Z]{3,}$")) || !parties.contains(name))
             return true;
         return false;
     }

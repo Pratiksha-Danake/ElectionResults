@@ -31,7 +31,7 @@ public class DataReader {
                 while ((line = br.readLine()) != null) {
                     if (line.trim().isEmpty())
                         continue;
-                    if ((Pattern.matches("^([\\w\\s]+)(?:,\\s*(\\w+),\\s*(\\d+))+$", line.replaceAll("\\s*,\\s*", ","))))
+                    if ((Pattern.matches("^([\\w\\s]+)(?:,\\s*(\\w+),\\s*(\\d+))+$", line)))
                         dataParser.parseInputLine(line);
                     else
                         throw new UnformattedInputLineException("Poorly Formatted Input Line " + line);

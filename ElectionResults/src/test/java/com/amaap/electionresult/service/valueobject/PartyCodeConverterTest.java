@@ -21,6 +21,7 @@ class PartyCodeConverterTest {
         assertEquals("Indian National Congress", getPartyFullName("INC"));
         assertEquals("Communist Party of India", getPartyFullName("CPI"));
         assertEquals("Nationalist Congress Party", getPartyFullName("NCP"));
+        assertEquals("", getPartyFullName(""));
     }
 
     @Test

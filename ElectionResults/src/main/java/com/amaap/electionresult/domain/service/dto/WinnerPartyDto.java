@@ -6,13 +6,15 @@ import java.util.Objects;
 
 public class WinnerPartyDto {
     private String constituencyName;
-    private final String partyName;
-    private final double percentageOfVotes;
+    private String partyName;
+    private double percentageOfVotes;
 
-    @Inject
     public WinnerPartyDto(String party, double percentageOfVotes) {
         this.partyName = party;
         this.percentageOfVotes = percentageOfVotes;
+    }
+
+    public WinnerPartyDto() {
     }
 
     public String getConstituencyName() {
