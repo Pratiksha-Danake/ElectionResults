@@ -6,6 +6,7 @@ import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituenc
 import com.amaap.electionresult.repository.ConstituencyRepository;
 import com.google.inject.Inject;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 public class ConstituencyService {
@@ -16,12 +17,12 @@ public class ConstituencyService {
         this.constituencyRepository = constituencyRepository;
     }
 
-    public List<Constituency> getConstituenciesData() {
-        return constituencyRepository.getConstituenciesData();
-    }
-
-    public Constituency createConstituency(String constituencyName, List<Party> parties) throws InvalidConstituencyNameException {
+    public Constituency createConstituency(String constituencyName, List<Party> parties) throws InvalidConstituencyNameException, FileNotFoundException {
         Constituency constituency = Constituency.create(constituencyName, parties);
         return constituencyRepository.addConstituency(constituency);
+    }
+
+    public List<Constituency> getConstituenciesData() {
+        return constituencyRepository.getConstituenciesData();
     }
 }

@@ -4,6 +4,7 @@ import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameEx
 import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
 import com.amaap.electionresult.domain.model.entity.validator.PartyDataValidator;
 
+import java.io.FileNotFoundException;
 import java.util.Objects;
 
 import static com.amaap.electionresult.domain.model.entity.validator.PartyDataValidator.isInvalidPartyName;
@@ -17,7 +18,7 @@ public class Party {
         this.vote = vote;
     }
 
-    public static Party create(String name, int vote) throws InvalidPartyNameException, InvalidVoteCountException {
+    public static Party create(String name, int vote) throws InvalidPartyNameException, InvalidVoteCountException, FileNotFoundException {
         if (isInvalidPartyName(name))
             throw new InvalidPartyNameException("Party name can't be: " + name);
         if (PartyDataValidator.isInvalidVoteCount(vote))

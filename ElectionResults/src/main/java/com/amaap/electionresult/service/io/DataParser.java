@@ -7,6 +7,7 @@ import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountEx
 import com.amaap.electionresult.service.ConstituencyService;
 import com.google.inject.Inject;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class DataParser {
         this.constituencyService = constituencyService;
     }
 
-    public boolean parseInputLine(String line) throws InvalidPartyNameException, InvalidVoteCountException, InvalidConstituencyNameException {
+    public boolean parseInputLine(String line) throws InvalidPartyNameException, InvalidVoteCountException, InvalidConstituencyNameException, FileNotFoundException {
         List<Party> parties = new ArrayList<Party>();
         String[] data = line.split(", ");
         String constituencyName = data[0];

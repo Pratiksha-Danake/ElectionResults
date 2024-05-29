@@ -6,12 +6,13 @@ import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituenc
 import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ConstituencyBuilder {
 
-    public static List<Constituency> getConstituencies() throws InvalidPartyNameException, InvalidVoteCountException, InvalidConstituencyNameException {
+    public static List<Constituency> getConstituencies() throws InvalidPartyNameException, InvalidVoteCountException, InvalidConstituencyNameException, FileNotFoundException {
         List<Constituency> constituencies = new ArrayList<Constituency>();
 
         List<Party> constituencyOneParties = new ArrayList<Party>();
@@ -40,8 +41,7 @@ public class ConstituencyBuilder {
         return constituencies;
     }
 
-    public static Constituency getConstituency() throws InvalidPartyNameException, InvalidVoteCountException, InvalidConstituencyNameException {
-        List<Constituency> constituencies = new ArrayList<Constituency>();
+    public static Constituency getConstituency() throws InvalidPartyNameException, InvalidVoteCountException, InvalidConstituencyNameException, FileNotFoundException {
 
         List<Party> constituencyOneParties = new ArrayList<Party>();
         constituencyOneParties.add(Party.create("INC", 100));

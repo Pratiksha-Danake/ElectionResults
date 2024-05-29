@@ -4,12 +4,14 @@ import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameEx
 import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PartyTest {
 
     @Test
-    void shouldBeAbleToCreateTheInstanceOfParty() throws InvalidPartyNameException, InvalidVoteCountException {
+    void shouldBeAbleToCreateTheInstanceOfParty() throws InvalidPartyNameException, InvalidVoteCountException, FileNotFoundException {
         // arrange
         String partyName = "BJP";
         int voteCount = 100;
@@ -59,7 +61,7 @@ class PartyTest {
     }
 
     @Test
-    void shouldBeAbleToReturnTheHashCode() throws InvalidPartyNameException, InvalidVoteCountException {
+    void shouldBeAbleToReturnTheHashCode() throws InvalidPartyNameException, InvalidVoteCountException, FileNotFoundException {
         // arrange && act
         Party party1 = Party.create("BJP", 100);
         Party party2 = Party.create("INC", 100);
@@ -69,7 +71,7 @@ class PartyTest {
     }
 
     @Test
-    void shouldBeAbleToTestTheEqualityOfTwoInstancesOfPartyClass() throws InvalidPartyNameException, InvalidVoteCountException {
+    void shouldBeAbleToTestTheEqualityOfTwoInstancesOfPartyClass() throws InvalidPartyNameException, InvalidVoteCountException, FileNotFoundException {
         // arrange
         Party party1 = Party.create("BJP", 100);
         Party party2 = Party.create("INC", 100);
@@ -78,13 +80,13 @@ class PartyTest {
 
 
         // act && assert
-        assertFalse(party1.equals(null));
-        assertTrue(party1.equals(party1));
-        assertFalse(party1.equals(new Object()));
+        assertNotEquals(null, party1);
+        assertEquals(party1, party1);
+        assertNotEquals(party1, new Object());
 
-        assertFalse(party2.equals(party3));
-        assertFalse(party1.equals(party3));
-        assertTrue(party2.equals(party4));
-        assertFalse(party1.equals(party2));
+        assertNotEquals(party2, party3);
+        assertNotEquals(party1, party3);
+        assertEquals(party2, party4);
+        assertNotEquals(party1, party2);
     }
 }

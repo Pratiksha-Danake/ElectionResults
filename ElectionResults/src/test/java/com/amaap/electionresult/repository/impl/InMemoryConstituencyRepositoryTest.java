@@ -11,6 +11,7 @@ import com.google.inject.Injector;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,7 +27,7 @@ class InMemoryConstituencyRepositoryTest {
     }
 
     @Test
-    void shouldBeAbleToAddConstituencyToTheDatabase() throws InvalidConstituencyNameException, InvalidPartyNameException, InvalidVoteCountException {
+    void shouldBeAbleToAddConstituencyToTheDatabase() throws InvalidConstituencyNameException, InvalidPartyNameException, InvalidVoteCountException, FileNotFoundException {
         // arrange
         Constituency constituency = ConstituencyBuilder.getConstituency();
 
@@ -38,7 +39,7 @@ class InMemoryConstituencyRepositoryTest {
     }
 
     @Test
-    void shouldBeAbleToGetConstituenciesFromTheDatabase() throws InvalidConstituencyNameException, InvalidPartyNameException, InvalidVoteCountException {
+    void shouldBeAbleToGetConstituenciesFromTheDatabase() throws InvalidConstituencyNameException, InvalidPartyNameException, InvalidVoteCountException, FileNotFoundException {
         // arrange
         Constituency expected = ConstituencyBuilder.getConstituency();
 
