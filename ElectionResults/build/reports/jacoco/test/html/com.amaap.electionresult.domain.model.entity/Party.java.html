@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Party.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ElectionResults</a> &gt; <a href="index.source.html" class="el_package">com.amaap.electionresult.domain.model.entity</a> &gt; <span class="el_source">Party.java</span></div><h1>Party.java</h1><pre class="source lang-java linenums">package com.amaap.electionresult.domain.model.entity;
+
+import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyDataException;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
+import com.amaap.electionresult.domain.model.entity.validator.PartyDataValidator;
+
+import java.io.FileNotFoundException;
+import java.util.Objects;
+
+import static com.amaap.electionresult.domain.model.entity.validator.PartyDataValidator.isInvalidPartyName;
+
+public class Party {
+    private final String name;
+    private final int vote;
+
+<span class="fc" id="L17">    private Party(String name, int vote) {</span>
+<span class="fc" id="L18">        this.name = name;</span>
+<span class="fc" id="L19">        this.vote = vote;</span>
+<span class="fc" id="L20">    }</span>
+
+    public static Party create(String name, int vote) throws InvalidPartyDataException, FileNotFoundException {
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        if (isInvalidPartyName(name))</span>
+<span class="fc" id="L24">            throw new InvalidPartyNameException(&quot;Party name can't be: &quot; + name);</span>
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        if (PartyDataValidator.isInvalidVoteCount(vote))</span>
+<span class="fc" id="L26">            throw new InvalidVoteCountException(&quot;Vote Count Can't Be: &quot; + vote);</span>
+<span class="fc" id="L27">        return new Party(name, vote);</span>
+    }
+
+    public String getName() {
+<span class="fc" id="L31">        return name;</span>
+    }
+
+    public int getVote() {
+<span class="fc" id="L35">        return vote;</span>
+    }
+
+    @Override
+    public boolean equals(Object o) {
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (this == o) return true;</span>
+<span class="fc bfc" id="L41" title="All 4 branches covered.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="fc" id="L42">        Party party = (Party) o;</span>
+<span class="fc bfc" id="L43" title="All 4 branches covered.">        return vote == party.vote &amp;&amp; Objects.equals(name, party.name);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L48">        return Objects.hash(name, vote);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

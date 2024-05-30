@@ -2,6 +2,7 @@ package com.amaap.electionresult.controller;
 
 import com.amaap.electionresult.controller.dto.HttpStatus;
 import com.amaap.electionresult.controller.dto.Response;
+import com.amaap.electionresult.domain.model.entity.Constituency;
 import com.amaap.electionresult.domain.model.entity.Party;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituencyNameException;
 import com.amaap.electionresult.service.ConstituencyService;
@@ -27,5 +28,9 @@ public class ConstituencyController {
             response = new Response(HttpStatus.BAD_REQUEST, "Invalid Data Provided");
         }
         return response;
+    }
+
+    public List<Constituency> getConstituenciesData() {
+        return constituencyService.getConstituenciesData();
     }
 }

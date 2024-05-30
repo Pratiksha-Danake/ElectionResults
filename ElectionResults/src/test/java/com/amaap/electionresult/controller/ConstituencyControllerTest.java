@@ -3,8 +3,11 @@ package com.amaap.electionresult.controller;
 import com.amaap.electionresult.AppModule;
 import com.amaap.electionresult.controller.dto.HttpStatus;
 import com.amaap.electionresult.controller.dto.Response;
+import com.amaap.electionresult.domain.model.entity.Constituency;
 import com.amaap.electionresult.domain.model.entity.Party;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituencyNameException;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyDataException;
+import com.amaap.electionresult.util.ConstituencyBuilder;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class ConstituencyControllerTest {
     List<Party> parties = new ArrayList<Party>();
@@ -67,5 +71,18 @@ class ConstituencyControllerTest {
 
         // assert
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldBeAbleToGetConstituencies() throws InvalidConstituencyNameException, InvalidPartyDataException, FileNotFoundException {
+        // arrange
+        Constituency expected = ConstituencyBuilder.getConstituency();
+
+        // act
+        List<Constituency> constituencies = constituencyController.getConstituenciesData();
+
+        // assert
+        assertNotNull(constituencies);
+
     }
 }

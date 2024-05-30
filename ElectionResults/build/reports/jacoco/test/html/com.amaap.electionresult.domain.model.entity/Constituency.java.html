@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Constituency.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ElectionResults</a> &gt; <a href="index.source.html" class="el_package">com.amaap.electionresult.domain.model.entity</a> &gt; <span class="el_source">Constituency.java</span></div><h1>Constituency.java</h1><pre class="source lang-java linenums">package com.amaap.electionresult.domain.model.entity;
+
+import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituencyNameException;
+import com.amaap.electionresult.domain.model.entity.validator.ConstituencyDataValidator;
+
+import java.io.FileNotFoundException;
+import java.util.List;
+import java.util.Objects;
+
+public class Constituency {
+    private final String name;
+    private final List&lt;Party&gt; parties;
+
+<span class="fc" id="L14">    private Constituency(String name, List&lt;Party&gt; parties) {</span>
+<span class="fc" id="L15">        this.name = name;</span>
+<span class="fc" id="L16">        this.parties = parties;</span>
+<span class="fc" id="L17">    }</span>
+
+    public static Constituency create(String name, List&lt;Party&gt; parties) throws InvalidConstituencyNameException, FileNotFoundException {
+<span class="fc bfc" id="L20" title="All 2 branches covered.">        if (ConstituencyDataValidator.isInvalidConstituencyName(name))</span>
+<span class="fc" id="L21">            throw new InvalidConstituencyNameException(&quot;Constituency Name Can't Be:&quot; + name);</span>
+<span class="fc" id="L22">        return new Constituency(name, parties);</span>
+    }
+
+    public String getName() {
+<span class="fc" id="L26">        return name;</span>
+    }
+
+    public List&lt;Party&gt; getParties() {
+<span class="fc" id="L30">        return parties;</span>
+    }
+
+    @Override
+    public boolean equals(Object o) {
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        if (this == o) return true;</span>
+<span class="fc bfc" id="L36" title="All 4 branches covered.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="fc" id="L37">        Constituency that = (Constituency) o;</span>
+<span class="fc" id="L38">        return name.equals(that.name);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L43">        return Objects.hash(name, parties);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

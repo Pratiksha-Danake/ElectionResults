@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConstituencyService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ElectionResults</a> &gt; <a href="index.source.html" class="el_package">com.amaap.electionresult.service</a> &gt; <span class="el_source">ConstituencyService.java</span></div><h1>ConstituencyService.java</h1><pre class="source lang-java linenums">package com.amaap.electionresult.service;
+
+import com.amaap.electionresult.domain.model.entity.Constituency;
+import com.amaap.electionresult.domain.model.entity.Party;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituencyNameException;
+import com.amaap.electionresult.repository.ConstituencyRepository;
+import com.google.inject.Inject;
+
+import java.io.FileNotFoundException;
+import java.util.List;
+
+public class ConstituencyService {
+    private final ConstituencyRepository constituencyRepository;
+
+    @Inject
+<span class="fc" id="L16">    public ConstituencyService(ConstituencyRepository constituencyRepository) {</span>
+<span class="fc" id="L17">        this.constituencyRepository = constituencyRepository;</span>
+<span class="fc" id="L18">    }</span>
+
+    public Constituency createConstituency(String constituencyName, List&lt;Party&gt; parties) throws InvalidConstituencyNameException, FileNotFoundException {
+<span class="fc" id="L21">        Constituency constituency = Constituency.create(constituencyName, parties);</span>
+<span class="fc" id="L22">        return constituencyRepository.addConstituency(constituency);</span>
+    }
+
+    public List&lt;Constituency&gt; getConstituenciesData() {
+<span class="fc" id="L26">        return constituencyRepository.getConstituenciesData();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

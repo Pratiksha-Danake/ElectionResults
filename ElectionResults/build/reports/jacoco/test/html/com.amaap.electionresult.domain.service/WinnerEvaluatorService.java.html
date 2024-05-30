@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WinnerEvaluatorService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ElectionResults</a> &gt; <a href="index.source.html" class="el_package">com.amaap.electionresult.domain.service</a> &gt; <span class="el_source">WinnerEvaluatorService.java</span></div><h1>WinnerEvaluatorService.java</h1><pre class="source lang-java linenums">package com.amaap.electionresult.domain.service;
+
+import com.amaap.electionresult.domain.model.entity.Constituency;
+import com.amaap.electionresult.domain.model.entity.Party;
+import com.amaap.electionresult.domain.service.dto.WinnerPartyDto;
+
+import java.util.ArrayList;
+import java.util.List;
+
+<span class="fc" id="L10">public class WinnerEvaluatorService {</span>
+
+    public List&lt;WinnerPartyDto&gt; findWinner(List&lt;Constituency&gt; constituenciesData) {
+<span class="fc" id="L13">        List&lt;WinnerPartyDto&gt; winnerPartyDtoList = new ArrayList&lt;&gt;();</span>
+
+<span class="fc bfc" id="L15" title="All 2 branches covered.">        for (Constituency constituency : constituenciesData) {</span>
+<span class="fc" id="L16">            String constituencyName = constituency.getName();</span>
+<span class="fc" id="L17">            List&lt;Party&gt; constituencyParties = constituency.getParties();</span>
+<span class="fc" id="L18">            WinnerPartyDto winnerPartyDto = getWinnerOfTheConstituency(constituencyParties);</span>
+<span class="fc" id="L19">            winnerPartyDto.setConstituencyName(constituencyName);</span>
+<span class="fc" id="L20">            winnerPartyDtoList.add(winnerPartyDto);</span>
+<span class="fc" id="L21">        }</span>
+<span class="fc" id="L22">        return winnerPartyDtoList;</span>
+    }
+
+    private WinnerPartyDto getWinnerOfTheConstituency(List&lt;Party&gt; constituencyParties) {
+<span class="fc" id="L26">        String winnerParty = null;</span>
+<span class="fc" id="L27">        int maxVotes = Integer.MIN_VALUE;</span>
+<span class="fc" id="L28">        int totalVotes = 0;</span>
+
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        for (Party party : constituencyParties) {</span>
+<span class="fc" id="L31">            int votes = party.getVote();</span>
+<span class="fc" id="L32">            totalVotes += votes;</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">            if (votes &gt; maxVotes) {</span>
+<span class="fc" id="L34">                maxVotes = votes;</span>
+<span class="fc" id="L35">                winnerParty = party.getName();</span>
+            }
+<span class="fc" id="L37">        }</span>
+
+<span class="fc" id="L39">        double percentageOfVotes = getPercentageOfVotes(totalVotes, maxVotes);</span>
+<span class="fc" id="L40">        return new WinnerPartyDto(winnerParty, percentageOfVotes);</span>
+    }
+
+    private double getPercentageOfVotes(int totalVotes, int maxVotes) {
+<span class="fc" id="L44">        double percentage = ((double) maxVotes / totalVotes) * 100;</span>
+<span class="fc" id="L45">        return Math.round(percentage * 100.0) / 100.0;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

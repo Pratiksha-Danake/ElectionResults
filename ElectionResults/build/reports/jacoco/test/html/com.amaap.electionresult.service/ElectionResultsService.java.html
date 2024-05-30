@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ElectionResultsService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ElectionResults</a> &gt; <a href="index.source.html" class="el_package">com.amaap.electionresult.service</a> &gt; <span class="el_source">ElectionResultsService.java</span></div><h1>ElectionResultsService.java</h1><pre class="source lang-java linenums">package com.amaap.electionresult.service;
+
+import com.amaap.electionresult.domain.model.entity.Constituency;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituencyNameException;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyDataException;
+import com.amaap.electionresult.domain.service.WinnerEvaluatorService;
+import com.amaap.electionresult.domain.service.dto.WinnerPartyDto;
+import com.amaap.electionresult.service.io.DataReader;
+import com.amaap.electionresult.service.io.exception.InvalidFilePathException;
+import com.amaap.electionresult.service.io.exception.UnformattedInputLineException;
+import com.google.inject.Inject;
+
+import java.util.List;
+
+public class ElectionResultsService {
+    private DataReader dataReader;
+    private ConstituencyService constituencyService;
+    private WinnerEvaluatorService winnerEvaluatorService;
+    private WinnerDetailsPrintingService winnerDetailsPrintingService;
+
+    @Inject
+<span class="fc" id="L22">    public ElectionResultsService(DataReader dataReader, ConstituencyService constituencyService, WinnerEvaluatorService winnerEvaluatorService, WinnerDetailsPrintingService winnerDetailsPrintingService) {</span>
+<span class="fc" id="L23">        this.dataReader = dataReader;</span>
+<span class="fc" id="L24">        this.constituencyService = constituencyService;</span>
+<span class="fc" id="L25">        this.winnerEvaluatorService = winnerEvaluatorService;</span>
+<span class="fc" id="L26">        this.winnerDetailsPrintingService = winnerDetailsPrintingService;</span>
+<span class="fc" id="L27">    }</span>
+
+    public void evaluateElectionResults(String filePath) throws InvalidConstituencyNameException, InvalidFilePathException, InvalidPartyDataException, UnformattedInputLineException {
+<span class="fc" id="L30">        dataReader.readFile(filePath);</span>
+<span class="fc" id="L31">        List&lt;Constituency&gt; constituenciesData = constituencyService.getConstituenciesData();</span>
+<span class="fc" id="L32">        List&lt;WinnerPartyDto&gt; winners = winnerEvaluatorService.findWinner(constituenciesData);</span>
+<span class="fc" id="L33">        winnerDetailsPrintingService.print(winners);</span>
+<span class="fc" id="L34">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

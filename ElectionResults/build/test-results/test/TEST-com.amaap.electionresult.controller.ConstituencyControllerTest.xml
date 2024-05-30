@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.amaap.electionresult.controller.ConstituencyControllerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-05-30T12:47:07" hostname="DESKTOP-GUO1275" time="1.477">
+  <properties/>
+  <testcase name="shouldBeAbleToReturnResponseAsOkIfCreatesConstituencySuccessfully()" classname="com.amaap.electionresult.controller.ConstituencyControllerTest" time="1.384"/>
+  <testcase name="shouldBeAbleToGetConstituencies()" classname="com.amaap.electionresult.controller.ConstituencyControllerTest" time="0.046"/>
+  <testcase name="shouldBeAbleToReturnResponseAsBadRequestIfFailsToCreatesConstituency()" classname="com.amaap.electionresult.controller.ConstituencyControllerTest" time="0.033"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,10 +1,13 @@
 package com.amaap.electionresult.service;
 
+import com.amaap.electionresult.AppModule;
 import com.amaap.electionresult.domain.model.entity.Constituency;
 import com.amaap.electionresult.domain.model.entity.Party;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituencyNameException;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyDataException;
 import com.amaap.electionresult.util.ConstituencyBuilder;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,11 +15,17 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ConstituencyServiceTest {
     private List<Party> constituencyParties;
+    private ConstituencyService constituencyService;
+
+    @BeforeEach
+    void initialize() {
+        Injector injector = Guice.createInjector(new AppModule());
+        constituencyService = injector.getInstance(ConstituencyService.class);
+    }
 
     @BeforeEach()
     void arrangePartyData() throws InvalidPartyDataException, FileNotFoundException {
@@ -37,7 +46,7 @@ class ConstituencyServiceTest {
         String name = "Pune";
 
         // act
-        Constituency actual = Constituency.create(name, constituencyParties);
+        Constituency actual = constituencyService.createConstituency(name, constituencyParties);
 
         // assert
         assertEquals(expected, actual);
@@ -48,15 +57,27 @@ class ConstituencyServiceTest {
 
         // act && assert
         assertThrows(InvalidConstituencyNameException.class, () -> {
-            Constituency.create("", constituencyParties);
+            constituencyService.createConstituency("", constituencyParties);
         });
 
         assertThrows(InvalidConstituencyNameException.class, () -> {
-            Constituency.create(null, constituencyParties);
+            constituencyService.createConstituency(null, constituencyParties);
         });
 
         assertThrows(InvalidConstituencyNameException.class, () -> {
-            Constituency.create("ABC", constituencyParties);
+            constituencyService.createConstituency("ABC", constituencyParties);
         });
+    }
+
+    @Test
+    void shouldBeAbleToGetConstituencies() throws InvalidConstituencyNameException, InvalidPartyDataException, FileNotFoundException {
+        // arrange
+        Constituency expected = ConstituencyBuilder.getConstituency();
+
+        // act
+        List<Constituency> constituencies = constituencyService.getConstituenciesData();
+
+        // assert
+        assertNotNull(constituencies);
     }
 }
