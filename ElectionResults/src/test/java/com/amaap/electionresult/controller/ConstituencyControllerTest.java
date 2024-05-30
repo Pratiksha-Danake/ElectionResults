@@ -16,13 +16,26 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class ConstituencyControllerTest {
+    List<Party> parties = new ArrayList<Party>();
     private ConstituencyController constituencyController;
 
     @BeforeEach
     void initialize() {
         Injector injector = Guice.createInjector(new AppModule());
         constituencyController = injector.getInstance(ConstituencyController.class);
+    }
+
+    @BeforeEach
+    void arrangeParties() throws InvalidPartyNameException, FileNotFoundException, InvalidVoteCountException {
+        parties.add(Party.create("INC", 100));
+        parties.add(Party.create("CPI", 200));
+        parties.add(Party.create("BJP", 300));
+        parties.add(Party.create("NCP", 400));
+        parties.add(Party.create("BSP", 500));
+        parties.add(Party.create("IND", 600));
     }
 
     @Test
@@ -40,5 +53,21 @@ class ConstituencyControllerTest {
 
         // act
         Response actual = constituencyController.createConstituency(constituencyName, parties);
+
+        // assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldBeAbleToReturnResponseAsBadRequestIfFailsToCreatesConstituency() throws FileNotFoundException {
+        // arrange
+        String constituencyName = "";
+        Response expected = new Response(HttpStatus.BAD_REQUEST, "Invalid Data Provided");
+
+        // act
+        Response actual = constituencyController.createConstituency(constituencyName, parties);
+
+        // assert
+        assertEquals(expected, actual);
     }
 }
