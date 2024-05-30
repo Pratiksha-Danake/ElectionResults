@@ -44,15 +44,16 @@ class WinnerPartyDtoTest {
         winnerPartyDto1.setConstituencyName(constituencyName);
 
         WinnerPartyDto winnerPartyDto2 = new WinnerPartyDto("XYZ", 40.40);
+        winnerPartyDto2.setConstituencyName(constituencyName);
 
         WinnerPartyDto winnerPartyDto3 = new WinnerPartyDto(partyName, percentageOfVotes);
         winnerPartyDto3.setConstituencyName("constituencyName");
 
         // assert
-        assertTrue(winnerPartyDto1.equals(winnerPartyDto1));
-        assertFalse(winnerPartyDto1.equals(winnerPartyDto3));
         assertFalse(winnerPartyDto1.equals(null));
         assertFalse(winnerPartyDto1.equals(new Object()));
+        assertTrue(winnerPartyDto1.equals(winnerPartyDto1));
         assertFalse(winnerPartyDto1.equals(winnerPartyDto2));
+        assertFalse(winnerPartyDto1.equals(winnerPartyDto3));
     }
 }

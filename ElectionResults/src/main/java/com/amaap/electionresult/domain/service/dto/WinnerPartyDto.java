@@ -1,7 +1,5 @@
 package com.amaap.electionresult.domain.service.dto;
 
-import com.google.inject.Inject;
-
 import java.util.Objects;
 
 public class WinnerPartyDto {
@@ -39,11 +37,11 @@ public class WinnerPartyDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         WinnerPartyDto that = (WinnerPartyDto) o;
-        return Double.compare(that.percentageOfVotes, percentageOfVotes) == 0 && Objects.equals(constituencyName, that.constituencyName) && Objects.equals(partyName, that.partyName);
+        return constituencyName.equals(that.constituencyName) && partyName.equals(that.partyName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(constituencyName, partyName, percentageOfVotes);
+        return Objects.hash(constituencyName, partyName);
     }
 }

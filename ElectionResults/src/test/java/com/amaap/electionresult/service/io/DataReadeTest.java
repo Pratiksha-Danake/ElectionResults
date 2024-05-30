@@ -4,8 +4,6 @@ import com.amaap.electionresult.AppModule;
 import com.amaap.electionresult.domain.model.entity.Constituency;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituencyNameException;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyDataException;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
 import com.amaap.electionresult.service.ConstituencyService;
 import com.amaap.electionresult.service.io.exception.InvalidFilePathException;
 import com.amaap.electionresult.service.io.exception.UnformattedInputLineException;
@@ -36,7 +34,7 @@ public class DataReadeTest {
     }
 
     @Test
-    void shouldAbleToCreateFileObjectForTheFileLocatedAtGivenPath() throws IOException, InvalidFilePathException, UnformattedInputLineException, InvalidPartyDataException, InvalidConstituencyNameException {
+    void shouldAbleToCreateFileObjectForTheFileLocatedAtGivenPath() throws InvalidFilePathException, UnformattedInputLineException, InvalidPartyDataException, InvalidConstituencyNameException {
         //arrange
         String pathToFile = "E:\\ElectionResults\\ElectionResults\\src\\test\\java\\com\\amaap\\electionresult\\resource\\ResultData";
 
