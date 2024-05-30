@@ -4,9 +4,7 @@ import com.amaap.electionresult.AppModule;
 import com.amaap.electionresult.controller.dto.HttpStatus;
 import com.amaap.electionresult.controller.dto.Response;
 import com.amaap.electionresult.domain.model.entity.Party;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituencyNameException;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyDataException;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,7 +27,7 @@ class ConstituencyControllerTest {
     }
 
     @BeforeEach
-    void arrangeParties() throws InvalidPartyNameException, FileNotFoundException, InvalidVoteCountException {
+    void arrangeParties() throws FileNotFoundException, InvalidPartyDataException {
         parties.add(Party.create("INC", 100));
         parties.add(Party.create("CPI", 200));
         parties.add(Party.create("BJP", 300));
@@ -39,7 +37,7 @@ class ConstituencyControllerTest {
     }
 
     @Test
-    void shouldBeAbleToReturnResponseAsOkIfCreatesConstituencySuccessfully() throws InvalidConstituencyNameException, InvalidPartyNameException, FileNotFoundException, InvalidVoteCountException {
+    void shouldBeAbleToReturnResponseAsOkIfCreatesConstituencySuccessfully() throws InvalidPartyDataException, FileNotFoundException {
         // arrange
         String constituencyName = "Pune";
         List<Party> parties = new ArrayList<Party>();

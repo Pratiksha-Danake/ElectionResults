@@ -1,8 +1,7 @@
 package com.amaap.electionresult.service.io;
 
 import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituencyNameException;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyDataException;
 import com.amaap.electionresult.service.io.exception.InvalidFilePathException;
 import com.amaap.electionresult.service.io.exception.UnformattedInputLineException;
 import com.google.inject.Inject;
@@ -22,7 +21,7 @@ public class DataReader {
         this.dataParser = dataParser;
     }
 
-    public boolean readFile(String filePath) throws InvalidFilePathException, UnformattedInputLineException, InvalidPartyNameException, InvalidConstituencyNameException, InvalidVoteCountException {
+    public boolean readFile(String filePath) throws InvalidFilePathException, UnformattedInputLineException, InvalidPartyDataException, InvalidConstituencyNameException {
         if (isInvalidPath(filePath)) {
             throw new InvalidFilePathException("File Path Can't be " + filePath);
         } else {

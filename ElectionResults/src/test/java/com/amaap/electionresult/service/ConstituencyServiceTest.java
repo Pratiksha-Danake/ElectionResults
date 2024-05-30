@@ -3,8 +3,7 @@ package com.amaap.electionresult.service;
 import com.amaap.electionresult.domain.model.entity.Constituency;
 import com.amaap.electionresult.domain.model.entity.Party;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituencyNameException;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyDataException;
 import com.amaap.electionresult.util.ConstituencyBuilder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,7 +19,7 @@ class ConstituencyServiceTest {
     private List<Party> constituencyParties;
 
     @BeforeEach()
-    void arrangePartyData() throws InvalidPartyNameException, InvalidVoteCountException, FileNotFoundException {
+    void arrangePartyData() throws InvalidPartyDataException, FileNotFoundException {
         // arrange
         constituencyParties = new ArrayList<Party>();
         constituencyParties.add(Party.create("INC", 1200));
@@ -32,7 +31,7 @@ class ConstituencyServiceTest {
     }
 
     @Test
-    void shouldBeAbleToCreateTheInstanceOfConstituency() throws InvalidPartyNameException, InvalidVoteCountException, InvalidConstituencyNameException, FileNotFoundException {
+    void shouldBeAbleToCreateTheInstanceOfConstituency() throws InvalidPartyDataException, InvalidConstituencyNameException, FileNotFoundException {
         // arrange
         Constituency expected = ConstituencyBuilder.getConstituency();
         String name = "Pune";

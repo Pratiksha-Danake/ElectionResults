@@ -1,5 +1,6 @@
 package com.amaap.electionresult.domain.model.entity;
 
+import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyDataException;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
 import org.junit.jupiter.api.Test;
@@ -11,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PartyTest {
 
     @Test
-    void shouldBeAbleToCreateTheInstanceOfParty() throws InvalidPartyNameException, InvalidVoteCountException, FileNotFoundException {
+    void shouldBeAbleToCreateTheInstanceOfParty() throws InvalidPartyDataException, FileNotFoundException {
         // arrange
         String partyName = "BJP";
         int voteCount = 100;
@@ -61,7 +62,7 @@ class PartyTest {
     }
 
     @Test
-    void shouldBeAbleToReturnTheHashCode() throws InvalidPartyNameException, InvalidVoteCountException, FileNotFoundException {
+    void shouldBeAbleToReturnTheHashCode() throws InvalidPartyDataException, FileNotFoundException {
         // arrange && act
         Party party1 = Party.create("BJP", 100);
         Party party2 = Party.create("INC", 100);
@@ -71,7 +72,7 @@ class PartyTest {
     }
 
     @Test
-    void shouldBeAbleToTestTheEqualityOfTwoInstancesOfPartyClass() throws InvalidPartyNameException, InvalidVoteCountException, FileNotFoundException {
+    void shouldBeAbleToTestTheEqualityOfTwoInstancesOfPartyClass() throws InvalidPartyDataException, FileNotFoundException {
         // arrange
         Party party1 = Party.create("BJP", 100);
         Party party2 = Party.create("INC", 100);

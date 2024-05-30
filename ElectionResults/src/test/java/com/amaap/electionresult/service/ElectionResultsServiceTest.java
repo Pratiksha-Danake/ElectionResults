@@ -2,8 +2,7 @@ package com.amaap.electionresult.service;
 
 import com.amaap.electionresult.AppModule;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituencyNameException;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyDataException;
 import com.amaap.electionresult.service.io.exception.InvalidFilePathException;
 import com.amaap.electionresult.service.io.exception.UnformattedInputLineException;
 import com.google.inject.Guice;
@@ -25,7 +24,7 @@ public class ElectionResultsServiceTest {
     }
 
     @Test
-    void shouldBeAbleToGetWinnersOfEachConstituencyByUsingDomainService() throws InvalidPartyNameException, InvalidVoteCountException, InvalidConstituencyNameException, FileNotFoundException, InvalidFilePathException, UnformattedInputLineException {
+    void shouldBeAbleToGetWinnersOfEachConstituencyByUsingDomainService() throws InvalidPartyDataException, InvalidConstituencyNameException, FileNotFoundException, InvalidFilePathException, UnformattedInputLineException {
         // arrange
         String filePath = "E:\\ElectionResults\\ElectionResults\\src\\test\\java\\com\\amaap\\electionresult\\resource\\ResultData";
 

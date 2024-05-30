@@ -3,8 +3,7 @@ package com.amaap.electionresult.domain.service;
 import com.amaap.electionresult.AppModule;
 import com.amaap.electionresult.domain.model.entity.Constituency;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituencyNameException;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyDataException;
 import com.amaap.electionresult.domain.service.dto.WinnerPartyDto;
 import com.amaap.electionresult.service.ConstituencyService;
 import com.amaap.electionresult.service.io.DataReader;
@@ -34,7 +33,7 @@ class WinnerEvaluatorServiceTest {
 
     @Test
     void shouldBeAbleToFindTheWinnerPartyOfConstituency()
-            throws InvalidConstituencyNameException, InvalidFilePathException, InvalidPartyNameException, UnformattedInputLineException, InvalidVoteCountException {
+            throws InvalidConstituencyNameException, InvalidFilePathException, UnformattedInputLineException, InvalidPartyDataException {
 
         // arrange
         String filePath = "E:\\ElectionResults\\ElectionResults\\src\\test\\java\\com\\amaap\\electionresult\\resource\\ResultData";

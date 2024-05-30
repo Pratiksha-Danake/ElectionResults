@@ -1,8 +1,7 @@
 package com.amaap.electionresult.domain.model.entity;
 
 import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituencyNameException;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyDataException;
 import com.amaap.electionresult.util.ConstituencyBuilder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +16,7 @@ class ConstituencyTest {
     private List<Party> constituencyParties;
 
     @BeforeEach()
-    void arrangePartyData() throws InvalidPartyNameException, InvalidVoteCountException, FileNotFoundException {
+    void arrangePartyData() throws InvalidPartyDataException, FileNotFoundException {
         // arrange
         constituencyParties = new ArrayList<Party>();
         constituencyParties.add(Party.create("INC", 100));
@@ -29,7 +28,7 @@ class ConstituencyTest {
     }
 
     @Test
-    void shouldBeAbleToCreateTheInstanceOfConstituency() throws InvalidPartyNameException, InvalidVoteCountException, InvalidConstituencyNameException, FileNotFoundException {
+    void shouldBeAbleToCreateTheInstanceOfConstituency() throws InvalidPartyDataException, InvalidConstituencyNameException, FileNotFoundException {
         // arrange
         Constituency expected = ConstituencyBuilder.getConstituency();
         String name = "Pune";
@@ -59,7 +58,7 @@ class ConstituencyTest {
     }
 
     @Test
-    void shouldBeAbleReturnHashCode() throws InvalidConstituencyNameException, InvalidPartyNameException, InvalidVoteCountException, FileNotFoundException {
+    void shouldBeAbleReturnHashCode() throws InvalidConstituencyNameException, InvalidPartyDataException, FileNotFoundException {
         // arrange
         Constituency constituency1 = Constituency.create("Pune", constituencyParties);
         List<Party> parties = new ArrayList<Party>();

@@ -2,8 +2,7 @@ package com.amaap.electionresult.service;
 
 import com.amaap.electionresult.AppModule;
 import com.amaap.electionresult.domain.model.entity.Party;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyDataException;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +22,7 @@ class PartyServiceTest {
     }
 
     @Test
-    void shouldBeAbleToCreateParty() throws InvalidPartyNameException, FileNotFoundException, InvalidVoteCountException {
+    void shouldBeAbleToCreateParty() throws InvalidPartyDataException, FileNotFoundException {
         // arrange
         String partyName = "BJP";
         int voteCount = 100;

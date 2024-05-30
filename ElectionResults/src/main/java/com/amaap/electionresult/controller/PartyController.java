@@ -2,8 +2,7 @@ package com.amaap.electionresult.controller;
 
 import com.amaap.electionresult.controller.dto.HttpStatus;
 import com.amaap.electionresult.controller.dto.Response;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyDataException;
 import com.amaap.electionresult.service.PartyService;
 import com.google.inject.Inject;
 
@@ -22,7 +21,7 @@ public class PartyController {
         try {
             partyService.createParty(partyName, voteCount);
             response = new Response(HttpStatus.OK, "CREATED");
-        } catch (InvalidPartyNameException | InvalidVoteCountException e) {
+        } catch (InvalidPartyDataException e) {
             response = new Response(HttpStatus.BAD_REQUEST, "Invalid Data Provided");
         }
         return response;

@@ -3,8 +3,7 @@ package com.amaap.electionresult.repository.db.impl;
 import com.amaap.electionresult.AppModule;
 import com.amaap.electionresult.domain.model.entity.Constituency;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituencyNameException;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
-import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyDataException;
 import com.amaap.electionresult.util.ConstituencyBuilder;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -27,7 +26,7 @@ class FakeInMemoryDatabaseTest {
     }
 
     @Test
-    void shouldBeAbleToAddConstituencyToTheDatabase() throws InvalidConstituencyNameException, InvalidPartyNameException, InvalidVoteCountException, FileNotFoundException {
+    void shouldBeAbleToAddConstituencyToTheDatabase() throws InvalidConstituencyNameException, InvalidPartyDataException, FileNotFoundException {
         // arrange
         Constituency constituency = ConstituencyBuilder.getConstituency();
 
@@ -39,7 +38,7 @@ class FakeInMemoryDatabaseTest {
     }
 
     @Test
-    void shouldBeAbleToGetConstituenciesFromTheDatabase() throws InvalidConstituencyNameException, InvalidPartyNameException, InvalidVoteCountException, FileNotFoundException {
+    void shouldBeAbleToGetConstituenciesFromTheDatabase() throws InvalidConstituencyNameException, InvalidPartyDataException, FileNotFoundException {
         // arrange
         Constituency expected = ConstituencyBuilder.getConstituency();
 

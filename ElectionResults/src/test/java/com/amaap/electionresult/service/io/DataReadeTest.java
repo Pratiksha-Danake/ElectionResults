@@ -3,6 +3,7 @@ package com.amaap.electionresult.service.io;
 import com.amaap.electionresult.AppModule;
 import com.amaap.electionresult.domain.model.entity.Constituency;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituencyNameException;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyDataException;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
 import com.amaap.electionresult.service.ConstituencyService;
@@ -35,7 +36,7 @@ public class DataReadeTest {
     }
 
     @Test
-    void shouldAbleToCreateFileObjectForTheFileLocatedAtGivenPath() throws IOException, InvalidFilePathException, UnformattedInputLineException, InvalidPartyNameException, InvalidConstituencyNameException, InvalidVoteCountException {
+    void shouldAbleToCreateFileObjectForTheFileLocatedAtGivenPath() throws IOException, InvalidFilePathException, UnformattedInputLineException, InvalidPartyDataException, InvalidConstituencyNameException {
         //arrange
         String pathToFile = "E:\\ElectionResults\\ElectionResults\\src\\test\\java\\com\\amaap\\electionresult\\resource\\ResultData";
 
@@ -44,7 +45,7 @@ public class DataReadeTest {
     }
 
     @Test
-    void shouldThrowInvalidFilePathExceptionIfFilePathIsNull() throws IOException {
+    void shouldThrowInvalidFilePathExceptionIfFilePathIsNull() {
         //arrange
         String filePath = null;
 
@@ -66,7 +67,7 @@ public class DataReadeTest {
     }
 
     @Test
-    void shouldBeAbleToSendDataToTheParserToFindMeaningFullInsights() throws InvalidFilePathException, UnformattedInputLineException, InvalidPartyNameException, InvalidVoteCountException, InvalidConstituencyNameException, FileNotFoundException {
+    void shouldBeAbleToSendDataToTheParserToFindMeaningFullInsights() throws InvalidFilePathException, UnformattedInputLineException, InvalidPartyDataException, InvalidConstituencyNameException, FileNotFoundException {
         //arrange
         String pathToFile = "E:\\ElectionResults\\ElectionResults\\src\\test\\java\\com\\amaap\\electionresult\\resource\\ResultData";
         List<Constituency> expected = ConstituencyBuilder.getConstituencies();
@@ -80,7 +81,7 @@ public class DataReadeTest {
     }
 
     @Test
-    void shouldBeAbleToIgnoreEmptyLinesInBetweenDataLinesAndContinuesReading() throws InvalidConstituencyNameException, InvalidFilePathException, InvalidPartyNameException, UnformattedInputLineException, FileNotFoundException, InvalidVoteCountException {
+    void shouldBeAbleToIgnoreEmptyLinesInBetweenDataLinesAndContinuesReading() throws InvalidConstituencyNameException, InvalidFilePathException, InvalidPartyDataException, UnformattedInputLineException, FileNotFoundException {
         //arrange
         String pathToFile = "E:\\ElectionResults\\ElectionResults\\src\\test\\java\\com\\amaap\\electionresult\\resource\\PoorlyFormattedResultData";
         List<Constituency> expected = ConstituencyBuilder.getConstituencies();
@@ -94,7 +95,7 @@ public class DataReadeTest {
     }
 
     @Test
-    void shouldThrowUnformattedInputLineExceptionIfFileContainsElectionDataWhichIsNotINRequiredFormat() throws InvalidConstituencyNameException, InvalidPartyNameException, FileNotFoundException, InvalidVoteCountException, InvalidFilePathException, UnformattedInputLineException {
+    void shouldThrowUnformattedInputLineExceptionIfFileContainsElectionDataWhichIsNotINRequiredFormat() throws InvalidConstituencyNameException, FileNotFoundException, InvalidPartyDataException {
         //arrange
         String pathToFile = "E:\\ElectionResults\\ElectionResults\\src\\test\\java\\com\\amaap\\electionresult\\resource\\DataThrowException";
         List<Constituency> expected = ConstituencyBuilder.getConstituencies();
