@@ -8,6 +8,8 @@ import com.google.inject.Injector;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
+
 public class PartyControllerTest {
     private PartyController partyController;
 
@@ -18,7 +20,7 @@ public class PartyControllerTest {
     }
 
     @Test
-    void shouldBeAbleToReturnResponseAsOkIfCreatesPartySuccessfully() {
+    void shouldBeAbleToReturnResponseAsOkIfCreatesPartySuccessfully() throws FileNotFoundException {
         // arrange
         Response expected = new Response(HttpStatus.OK, "CREATED");
         String partyName = "BJP";
