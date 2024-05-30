@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.amaap.electionresult.domain.model.test.ConstituencyTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-03-24T09:37:02" hostname="DESKTOP-GUO1275" time="0.07">
-  <properties/>
-  <testcase name="shouldAbleToCreateConstituencyWithGivenName()" classname="com.amaap.electionresult.domain.model.test.ConstituencyTest" time="0.054"/>
-  <testcase name="shouldAbleToThrowInvalidConstituencyNameExceptionWhenConstituencyNameIsNull()" classname="com.amaap.electionresult.domain.model.test.ConstituencyTest" time="0.006"/>
-  <testcase name="shouldAbleToThrowInvalidConstituencyNameExceptionWhenConstituencyNameIsEmpty()" classname="com.amaap.electionresult.domain.model.test.ConstituencyTest" time="0.003"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
