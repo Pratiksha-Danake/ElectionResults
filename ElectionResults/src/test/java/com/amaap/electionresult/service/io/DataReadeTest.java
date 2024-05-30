@@ -35,7 +35,7 @@ public class DataReadeTest {
     }
 
     @Test
-    void shouldAbleToCreateFileObjectForTheFileLocatedAtGivenPath() throws IOException, InvalidFilePathException, UnformattedInputLineException, InvalidPartyNameException, InvalidConstituencyNameException {
+    void shouldAbleToCreateFileObjectForTheFileLocatedAtGivenPath() throws IOException, InvalidFilePathException, UnformattedInputLineException, InvalidPartyNameException, InvalidConstituencyNameException, InvalidVoteCountException {
         //arrange
         String pathToFile = "E:\\ElectionResults\\ElectionResults\\src\\test\\java\\com\\amaap\\electionresult\\resource\\ResultData";
 

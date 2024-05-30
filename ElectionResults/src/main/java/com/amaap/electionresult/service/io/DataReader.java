@@ -22,7 +22,7 @@ public class DataReader {
         this.dataParser = dataParser;
     }
 
-    public boolean readFile(String filePath) throws InvalidFilePathException, UnformattedInputLineException, InvalidPartyNameException, InvalidConstituencyNameException {
+    public boolean readFile(String filePath) throws InvalidFilePathException, UnformattedInputLineException, InvalidPartyNameException, InvalidConstituencyNameException, InvalidVoteCountException {
         if (isInvalidPath(filePath)) {
             throw new InvalidFilePathException("File Path Can't be " + filePath);
         } else {
@@ -36,7 +36,7 @@ public class DataReader {
                     else
                         throw new UnformattedInputLineException("Poorly Formatted Input Line " + line);
                 }
-            } catch (IOException | InvalidVoteCountException e) {
+            } catch (IOException e) {
                 return false;
             }
         }

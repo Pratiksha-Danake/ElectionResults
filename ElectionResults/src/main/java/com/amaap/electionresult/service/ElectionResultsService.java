@@ -3,6 +3,7 @@ package com.amaap.electionresult.service;
 import com.amaap.electionresult.domain.model.entity.Constituency;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidConstituencyNameException;
 import com.amaap.electionresult.domain.model.entity.exception.InvalidPartyNameException;
+import com.amaap.electionresult.domain.model.entity.exception.InvalidVoteCountException;
 import com.amaap.electionresult.domain.service.WinnerEvaluatorService;
 import com.amaap.electionresult.domain.service.dto.WinnerPartyDto;
 import com.amaap.electionresult.service.io.DataReader;
@@ -26,7 +27,7 @@ public class ElectionResultsService {
         this.winnerDetailsPrintingService = winnerDetailsPrintingService;
     }
 
-    public void evaluateElectionResults(String filePath) throws InvalidConstituencyNameException, InvalidFilePathException, InvalidPartyNameException, UnformattedInputLineException {
+    public void evaluateElectionResults(String filePath) throws InvalidConstituencyNameException, InvalidFilePathException, InvalidPartyNameException, UnformattedInputLineException, InvalidVoteCountException {
         dataReader.readFile(filePath);
         List<Constituency> constituenciesData = constituencyService.getConstituenciesData();
         List<WinnerPartyDto> winners = winnerEvaluatorService.findWinner(constituenciesData);
