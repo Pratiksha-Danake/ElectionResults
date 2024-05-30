@@ -1,7 +1,8 @@
 #### ElectionResults
 
-![Test Coverage Report For Election Results](./ER-TCR.png)
-![Output Sample For Election Results](./ER-OUTPUT.png)
+![ER-TCR](https://github.com/Pratiksha-Danake/ElectionResults/assets/111987794/2d013cee-9d5d-464a-aaa1-aca3d0d6bdef)
+
+![ER-OUTPUT](https://github.com/Pratiksha-Danake/ElectionResults/assets/111987794/b6dbba40-d3ef-43bc-b942-6d12c45767bb)
 
 It's election night! Exciting! We have a feed of election results from a data supplier.
 They will supply us a file which will be updated throughout the night as results come in.
