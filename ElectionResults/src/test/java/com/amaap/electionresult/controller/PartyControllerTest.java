@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class PartyControllerTest {
     private PartyController partyController;
 
@@ -28,5 +30,22 @@ public class PartyControllerTest {
 
         // act
         Response actual = partyController.createParty(partyName, voteCount);
+
+        // assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldBeAbleToReturnResponseAsBadRequestIfFailsToCreatesParty() throws FileNotFoundException {
+        // arrange
+        Response expected = new Response(HttpStatus.BAD_REQUEST, "Invalid Data Provided");
+        String partyName = "";
+        int voteCount = 100;
+
+        // act
+        Response actual = partyController.createParty(partyName, voteCount);
+
+        // assert
+        assertEquals(expected, actual);
     }
 }
